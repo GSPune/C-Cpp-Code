@@ -24,7 +24,7 @@ int main()
         pmin = min;
         min = (float)1/fact((int)m);
     }
-    cout << "The limit reached is " << pmin << " for n equal to " << n << endl;
+    cout << "The limit reached is " << pmin << " for m equal to " << m << endl;
 }
 
 int fact(int k)
