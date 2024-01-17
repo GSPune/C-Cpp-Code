@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cmath>
 
@@ -45,3 +46,5 @@ long double fact(int k)
 	f /=pow(10,(p));
    return f;
 }
+/*The limit reached is 5.17824e+3946+309 for n equal to 1545
+The limit reached is 1.93116e-3947-309 for m equal to 1545*/
