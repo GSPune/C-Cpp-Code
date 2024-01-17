@@ -28,6 +28,8 @@ int main()
     }
     cout << "The limit reached is " << pmin << " for m equal to " << m << endl;
 }
+/*The limit reached is 17196083355034583040 for n equal to 23
+The limit reached is 5.81528e-20 for m equal to 23*/
 
 unsigned long long int fact(int k)
 {
