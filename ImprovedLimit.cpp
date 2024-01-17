@@ -14,6 +14,10 @@ int main()
     long double pmax = 0.1, max = 0.1;
     while (max >= pmax)
     {
+       /* if (n == 170)
+            break;
+            170 is the largest integer for which its factorial can be 
+            stored in IEEE 754 double-precision floating-point format.*/
         n++;
         pmax = max;
         max = fact(n);
