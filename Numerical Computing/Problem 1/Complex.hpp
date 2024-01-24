@@ -9,5 +9,6 @@ class Complex
         void sub(Complex,Complex);
         void mul(Complex,Complex);
         void div(Complex,Complex);
-        void conjugate(Complex);
+        void conjugate();
+        //Complex
 };
