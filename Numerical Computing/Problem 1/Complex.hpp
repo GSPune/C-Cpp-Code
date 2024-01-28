@@ -10,5 +10,6 @@ class Complex
         void mul(Complex,Complex);
         void div(Complex,Complex);
         void conjugate();
+        double norm();
         //Complex
 };

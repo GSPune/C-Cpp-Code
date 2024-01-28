@@ -53,5 +53,10 @@ void Complex::div(Complex c1, Complex c2)
 void Complex::conjugate()
 {
     //this -> i = this -> i * (-1);
-    cout << this->r << " + " << "(" << (this->i * (-1)) << ")" << "i" << endl;
+    cout << r << " + " << "(" << (i * (-1)) << ")" << "i" << endl;
+}
+
+double Complex::norm()
+{
+    return sqrt(pow(r,2)+pow(i,2)); 
 }
