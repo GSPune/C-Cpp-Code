@@ -6,5 +6,5 @@ class BisectionMethod
         void get_interval(double,double);
         //void get_tolerance();
         double f(double);
-        void bisection(double,double,double);
+        void bisection();
 };
