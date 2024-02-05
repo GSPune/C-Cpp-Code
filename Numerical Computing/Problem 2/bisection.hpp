@@ -2,9 +2,9 @@ class BisectionMethod
 {
     double a,b,delta;
     public:
-        BisectionMethod(double,double,double);
-        //void get_interval();
+        BisectionMethod(double);
+        void get_interval(double,double);
         //void get_tolerance();
-        double function();
+        double f(double);
         void bisection(double,double,double);
 };
