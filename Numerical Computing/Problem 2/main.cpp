@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-#include "bisection.cpp"
+#include "bisection.hpp"
 
 int main(void)
 {
