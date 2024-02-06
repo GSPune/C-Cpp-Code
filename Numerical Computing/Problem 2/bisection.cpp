@@ -23,15 +23,17 @@ void BisectionMethod::get_interval(double x1,double x2)
 
 double BisectionMethod::f(double x)
 {
-    return (2*pow(x,2) - 1);
+    //return (2*pow(x,2) - 1);
+    return (4*pow(x,3)-3*x);
 }
 
 void BisectionMethod::bisection()
 {
-    double m = (a + b)/2;
-    double c = (f(m) < 0) ? f(m)*(-1) : f(m);
-    while(c > delta) // check this again
+     // check this again
+     double m,c;
+     do
     {
+        m = (a+b)/2;
         if (f(m)*f(a) < 0)
         {
             b = m;
@@ -39,8 +41,8 @@ void BisectionMethod::bisection()
         else{
             a = m;
         }
-        m = (a+b)/2;
         c = (f(m) < 0) ? f(m)*(-1) : f(m);
-    }
+        
+    } while(c > delta);
     cout << "The approximated root via Bisection Method is " << m << "!" << endl;
 }
