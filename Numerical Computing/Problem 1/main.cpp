@@ -5,11 +5,9 @@ using namespace std;
 
 int main(void)
 {
-    Complex a;
-    a.set(3,5);
+    Complex a(3,5);
     a.print();
-    Complex b;
-    b.set(6,10);
+    Complex b(6,10);
     b.print();
     Complex c;
     c.add(a,b);
@@ -21,6 +19,7 @@ int main(void)
     c.div(a,b);
     c.print();
     a.conjugate();
+    b.conjugate();
     cout << a.norm() << endl;
     cout << b.norm() << endl;
     cout << c.norm() << endl;

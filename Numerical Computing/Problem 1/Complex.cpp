@@ -11,11 +11,18 @@ Complex::Complex()
 //Function to print the complex number
 void Complex::print()
 {
-    cout << r << " + " << i << "i" << endl;
+    if (i >= 0)
+    {
+        cout << r << " + " << i << "i" << endl << endl;
+    }
+    else
+    {
+        cout << r << " - " << (-1)*i << "i" << endl << endl;
+    }
 }
 
 //Function to set/define values for the components of the complex number
-void Complex::set (double x, double y)
+Complex::Complex (double x, double y)
 {
     r = x;
     i = y;
@@ -52,8 +59,9 @@ void Complex::div(Complex c1, Complex c2)
 //Function to get the conjugate of a complex number
 void Complex::conjugate()
 {
-    //this -> i = this -> i * (-1);
-    cout << r << " + " << "(" << (i * (-1)) << ")" << "i" << endl;
+    this -> i = this -> i * (-1);
+    this ->print();
+    //cout << r << " + " << "(" << (i * (-1)) << ")" << "i" << endl;
 }
 
 double Complex::norm()

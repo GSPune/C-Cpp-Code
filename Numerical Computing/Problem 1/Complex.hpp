@@ -3,7 +3,7 @@ class Complex
     public:
         double r,i;
         Complex();
-        void set(double,double);
+        Complex(double,double);
         void print();
         void add(Complex,Complex);
         void sub(Complex,Complex);
