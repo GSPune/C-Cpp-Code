@@ -21,7 +21,7 @@ void Complex::print()
     }
 }
 
-//Function to set/define values for the components of the complex number
+//Parameterized Const. to set values for the components of the complex number
 Complex::Complex (double x, double y)
 {
     r = x;
