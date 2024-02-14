@@ -2,7 +2,8 @@ class Complex
 {
     public:
         double r,i;
-        Complex();
+        Complex();//Normal Constructor
+        //Use of a parameterised constructor to initialize data members instead of a 'set' function
         Complex(double,double);
         void print();
         void add(Complex,Complex);
@@ -11,5 +12,4 @@ class Complex
         void div(Complex,Complex);
         void conjugate();
         double norm();
-        //Complex
 };
