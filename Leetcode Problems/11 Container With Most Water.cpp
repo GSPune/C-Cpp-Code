@@ -5,7 +5,7 @@ class Solution {
 public:
     int maxArea(vector<int>& height) {
         int p1 = 0,p2 = height.size() - 1;
-        int max_area = 0,new_area = 0;
+        int max_area = 0;
         int min_height = min(height[p1],height[p2]);
         max_area = (p2-p1) * min_height;
         while(p1 < p2)
@@ -16,9 +16,6 @@ public:
                 p2--;
             min_height = min(height[p1],height[p2]);
             max_area = max(max_area,(p2-p1) * min_height);
-            //new_area = (p2-p1) * min_height;
-            // if (max_area < new_area)
-            //     max_area = new_area;
         }
         return max_area;
     }
