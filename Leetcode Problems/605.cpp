@@ -5,7 +5,7 @@ using namespace std;
 int main(void)
 {
     int n;
-    vector<int> flowerbed = {1};
+    vector<int> flowerbed = {1,0,0,0,0,1,0,1,0,0};
     int size = flowerbed.size(), count = 0;
     cout << "Enter the number of flowers to be placed\n";
     cin >> n;
