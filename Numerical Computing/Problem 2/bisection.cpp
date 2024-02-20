@@ -21,8 +21,8 @@ void BisectionMethod::find_interval()
             cout << "Bracketting Interval found:(" <<a<<", "<<b<<")\n";
             return;
         }
-        else
-            x1--;x2++;
+        else{
+            x1--;x2++;}
     }
 
     cout << " NO Valid Bracketing Interval found!" <<endl;
@@ -50,7 +50,6 @@ double BisectionMethod::f(double x)
 
 void BisectionMethod::bisection()
 {
-     // check this again
      double m,c;
      do
     {
@@ -69,9 +68,6 @@ void BisectionMethod::bisection()
         else{
             a = m;
         }
-        //c = (f(m) < 0) ? f(m)*(-1) : f(m);
-        
-        
     } while(fabs(c) > delta);
     cout << "The approximated root via Bisection Method is " << m << "!" << endl;
 }
