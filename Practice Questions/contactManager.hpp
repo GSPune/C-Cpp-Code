@@ -13,6 +13,7 @@ class ContactManager
         ContactManager();
         //ContactManager(string,string,ulong,string);
         //Member functions to add,view,delete,edit
+
         void Add(string,string,ulong,string);
         void Edit();
         void Delete();
