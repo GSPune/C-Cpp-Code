@@ -16,7 +16,7 @@ class ContactManager
 
         void Add(string,string,ulong,string);
         void Edit();
-        void Delete();
+        void Remove();
         void ListAllContacts();
         void BackUp();
 

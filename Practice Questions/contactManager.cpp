@@ -32,6 +32,7 @@ void ContactManager::Display()
 *@param Email
 *
 */
+
 void ContactManager::Add(string firstName, string lastName, ulong number, string email)
 {
     struct data tmp;
@@ -53,25 +54,25 @@ void ContactManager::ListAllContacts()
 
 void ContactManager::Edit()
 {
-ListAllContacts();
-cout <<"Select User to edit\n";
-int id;
-cin >> id;
+    ListAllContacts();
+    cout <<"Select User to edit\n";
+    int id;
+    cin >> id;
 
-cout <<"\nEnter new name::";
-cin >> info[id-1].firstName;
+    cout <<"\nEnter new name::";
+    cin >> info[id-1].firstName;
 }
 
 void ContactManager::Remove(){
-ListAllContacts();
-cout <<"Select User to delete...enter id\n";
-int id;
-cin >> id;
+    ListAllContacts();
+    cout <<"Select User to delete...enter id\n";
+    int id;
+    cin >> id;
 
-//info.erase(id-1);
-info[id - 1].firstName = "";
-info[id - 1].lastName = "";
-info[id - 1].number = 0;
-info[id - 1].email = "";
+    //info.erase(id-1);
+    info[id - 1].firstName = "";
+    info[id - 1].lastName = "";
+    info[id - 1].number = 0;
+    info[id - 1].email = "";
 }
 
