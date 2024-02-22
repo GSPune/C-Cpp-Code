@@ -51,3 +51,14 @@ void ContactManager::ListAllContacts()
     }
 }
 
+void ContactManager::Edit()
+{
+ListAllContacts();
+cout <<"Select User to edit\n";
+int id;
+cin >> id;
+
+cout <<"\nEnter new name::";
+cin >> data[id-1].name;
+}
+
