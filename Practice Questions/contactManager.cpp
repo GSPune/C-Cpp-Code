@@ -59,6 +59,19 @@ int id;
 cin >> id;
 
 cout <<"\nEnter new name::";
-cin >> data[id-1].name;
+cin >> info[id-1].firstName;
+}
+
+void ContactManager::Remove(){
+ListAllContacts();
+cout <<"Select User to delete...enter id\n";
+int id;
+cin >> id;
+
+//info.erase(id-1);
+info[id - 1].firstName = "";
+info[id - 1].lastName = "";
+info[id - 1].number = 0;
+info[id - 1].email = "";
 }
 
