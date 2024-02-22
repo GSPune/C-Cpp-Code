@@ -25,11 +25,12 @@ void ContactManager::Display()
 
 /**
 *@brief Function to add a new user
-
+*
 *@param First Name
 *@param Last Name
 *@param Number
 *@param Email
+*
 */
 void ContactManager::Add(string firstName, string lastName, ulong number, string email)
 {
