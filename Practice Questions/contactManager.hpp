@@ -17,8 +17,7 @@ class ContactManager
         void Edit();
         void Delete();
         void ListAllContacts();
-        void Display();
+        void BackUp();
 
-        //struct data info;
         vector <struct data> info; //vector <datatype> name
 };
