@@ -10,15 +10,34 @@ struct data
 class ContactManager
 {   
     public:
+        // Constructor
         ContactManager();
-        //ContactManager(string,string,ulong,string);
+
         //Member functions to add,view,delete,edit
 
         void Add(string,string,ulong,string);
-        void Edit();
-        void Remove();
+        void add(); // accept details from user
+
+
         void ListAllContacts();
-        void BackUp();
+
+        void Edit();
+        void editPhoneNumber();
+        void editName();
+        void editEmail();
+
+       // delete user from system
+        void removeUser();
+        void removeUserName();
+        void removeUserNumber();
+        void removeUserEmail();
+        
+        void searchName();
+        void searchNumber();
+        void searchEmail();
+
+        void backUp();
+        void restore();
 
         vector <struct data> info; //vector <datatype> name
 };
