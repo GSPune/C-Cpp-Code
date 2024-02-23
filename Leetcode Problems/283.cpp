@@ -24,6 +24,13 @@ int main(void)
         }
     }
 
+    /*
+    j = 0;
+    for i from 0 to size
+        if num[i] != 0 
+            swap(num[i],num[j]);j++;
+    */
+
     for (int i = 0; i < nums.size(); i++)
     {
        cout << nums[i] << " ";    
