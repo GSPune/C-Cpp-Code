@@ -78,6 +78,7 @@ void ContactManager::Edit()
 
     cout <<"Enter new email :: ";
     cin >> info[id-1].email;
+    cout << "\n";
 }
 
 
@@ -89,6 +90,7 @@ void ContactManager::editPhoneNumber(){
 
     cout <<"Enter new mobile number :: ";
     cin >> info[id-1].number;
+    cout << "\n";
 }
 
 void ContactManager::editName(){
@@ -102,6 +104,7 @@ void ContactManager::editName(){
 
     cout <<"Enter new last name :: ";
     cin >> info[id-1].lastName;
+    cout << "\n";
 }
 
 void ContactManager::editEmail(){
@@ -112,6 +115,7 @@ void ContactManager::editEmail(){
 
     cout <<"Enter new email :: ";
     cin >> info[id-1].email;
+    cout << "\n";
 }
 
 void ContactManager::removeUser(){
@@ -126,5 +130,22 @@ void ContactManager::removeUser(){
     // info[id - 1].lastName = "";
     // info[id - 1].number = 0;
     // info[id - 1].email = "";
+}
+
+void ContactManager::removeUserName(){
+    ListAllContacts();
+    cout << "Enter User Name to remove from contacts!\n";
+    string fn;
+    cin >> fn;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (fn.compare(info[i].firstName) == 0)
+        {
+            info.erase(info.begin()+i);
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
 }
 
