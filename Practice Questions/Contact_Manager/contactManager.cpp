@@ -10,20 +10,8 @@ ContactManager::ContactManager()
     // email = "johndoe@gmail.com";
 }
 
-/*ContactManager::ContactManager(string firstName, string lastName, ulong number, string email)
-{
-    this->firstName = firstName;
-    this->lastName = lastName;
-    this->number = number;
-    this->email = email;
-}*/
-
-void ContactManager::Display()
-{
-    //cout << "\nFirstName ::" << firstName << "\t lastName ::" << lastName <<"\t email ::"<< email << endl;
-}
-
 /**
+(This is Java Doc)
 *@brief Function to add a new user
 *
 *@param First Name
@@ -32,10 +20,9 @@ void ContactManager::Display()
 *@param Email
 *
 */
-
 void ContactManager::Add(string firstName, string lastName, ulong number, string email)
 {
-    struct data tmp;
+    data tmp;
     tmp.firstName = firstName;
     tmp.lastName = lastName;
     tmp.number = number;
@@ -44,11 +31,33 @@ void ContactManager::Add(string firstName, string lastName, ulong number, string
     info.push_back(tmp);
 }
 
+void ContactManager::Add()
+{
+    string fn,ln,em;ulong num;
+    data tmp;
+    cout << "Enter the details for the user as prompted!\n";
+    cout << "First Name: " ;
+    cin >> fn ;
+    cout << "Last Name: ";
+    cin >> ln;
+    cout << "Mobile Number: ";
+    cin >> num;
+    cout << "Email: ";
+    cin >> em;
+
+    tmp.firstName = fn;
+    tmp.lastName = ln;
+    tmp.number = num;
+    tmp.email = em;
+
+    info.push_back(tmp);
+}
+
 void ContactManager::ListAllContacts()
 {
     for(int i = 0; i < info.size(); i++)
     {
-        cout << "\nFirstName ::" << info[i].firstName << "\t lastName ::" << info[i].lastName <<"\t email ::"<< info[i].email << endl;
+        cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl << endl;
     }
 }
 
@@ -63,16 +72,16 @@ void ContactManager::Edit()
     cin >> info[id-1].firstName;
 }
 
-void ContactManager::Remove(){
-    ListAllContacts();
-    cout <<"Select User to delete...enter id\n";
-    int id;
-    cin >> id;
+// void ContactManager::Remove(){
+//     ListAllContacts();
+//     cout <<"Select User to delete...enter id\n";
+//     int id;
+//     cin >> id;
 
-    //info.erase(id-1);
-    info[id - 1].firstName = "";
-    info[id - 1].lastName = "";
-    info[id - 1].number = 0;
-    info[id - 1].email = "";
-}
+//     //info.erase(id-1);
+//     info[id - 1].firstName = "";
+//     info[id - 1].lastName = "";
+//     info[id - 1].number = 0;
+//     info[id - 1].email = "";
+// }
 
