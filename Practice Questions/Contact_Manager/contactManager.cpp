@@ -44,6 +44,7 @@ void ContactManager::Add()
     cin >> num;
     cout << "Email: ";
     cin >> em;
+    cout << endl;
 
     tmp.firstName = fn;
     tmp.lastName = ln;
@@ -57,31 +58,73 @@ void ContactManager::ListAllContacts()
 {
     for(int i = 0; i < info.size(); i++)
     {
-        cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl << endl;
+        cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
     }
+    cout << "\n";
 }
 
 void ContactManager::Edit()
 {
     ListAllContacts();
-    cout <<"Select User to edit\n";
+    cout <<"Select Valid User Id for editing details!\n";
     int id;
     cin >> id;
 
-    cout <<"\nEnter new name::";
+    cout <<"Enter new first name :: ";
     cin >> info[id-1].firstName;
+
+    cout <<"Enter new last name :: ";
+    cin >> info[id-1].lastName;
+
+    cout <<"Enter new email :: ";
+    cin >> info[id-1].email;
 }
 
-// void ContactManager::Remove(){
-//     ListAllContacts();
-//     cout <<"Select User to delete...enter id\n";
-//     int id;
-//     cin >> id;
 
-//     //info.erase(id-1);
-//     info[id - 1].firstName = "";
-//     info[id - 1].lastName = "";
-//     info[id - 1].number = 0;
-//     info[id - 1].email = "";
-// }
+void ContactManager::editPhoneNumber(){
+    ListAllContacts();
+    cout <<"Select Valid User Id for editing Mobile Number!\n";
+    int id;
+    cin >> id;
+
+    cout <<"Enter new mobile number :: ";
+    cin >> info[id-1].number;
+}
+
+void ContactManager::editName(){
+    ListAllContacts();
+    cout <<"Select Valid User Id for editing Name!\n";
+    int id;
+    cin >> id;
+
+    cout <<"Enter new first name :: ";
+    cin >> info[id-1].firstName;
+
+    cout <<"Enter new last name :: ";
+    cin >> info[id-1].lastName;
+}
+
+void ContactManager::editEmail(){
+    ListAllContacts();
+    cout <<"Select Valid User Id for editing Email!\n";
+    int id;
+    cin >> id;
+
+    cout <<"Enter new email :: ";
+    cin >> info[id-1].email;
+}
+
+void ContactManager::removeUser(){
+    ListAllContacts();
+    cout <<"Select Valid User Id to remove from contacts!\n";
+    int id;
+    cin >> id;
+
+    info.erase(info.begin()+(id-1));
+    cout << "\n";
+    // info[id - 1].firstName = "";
+    // info[id - 1].lastName = "";
+    // info[id - 1].number = 0;
+    // info[id - 1].email = "";
+}
 
