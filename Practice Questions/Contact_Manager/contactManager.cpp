@@ -149,3 +149,20 @@ void ContactManager::removeUserName(){
     cout << "NO User found!\n\n";
 }
 
+void ContactManager::removeUserEmail(){
+    ListAllContacts();
+    cout << "Enter User Email to remove from contacts!\n";
+    string em;
+    cin >> em;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (em.compare(info[i].email) == 0)
+        {
+            info.erase(info.begin()+i);
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
+}
+
