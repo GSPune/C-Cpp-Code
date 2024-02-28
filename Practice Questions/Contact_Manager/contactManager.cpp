@@ -1,5 +1,6 @@
 #include "contactManager.hpp"
 #include <bits/stdc++.h>
+#include <fstream>
 using namespace std;
 
 ContactManager::ContactManager()
@@ -56,11 +57,12 @@ void ContactManager::Add()
 
 void ContactManager::ListAllContacts()
 {
+    cout << "----------------------<List of all Contacts>-------------------------\n";
     for(int i = 0; i < info.size(); i++)
     {
         cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
     }
-    cout << "\n";
+    cout << "-------------------------------------------------------------------\n";
 }
 
 void ContactManager::Edit()
@@ -134,7 +136,7 @@ void ContactManager::removeUser(){
 
 void ContactManager::removeUserName(){
     ListAllContacts();
-    cout << "Enter User Name to remove from contacts!\n";
+    cout << "Enter User First Name to remove from contacts!\n";
     string fn;
     cin >> fn;
 
@@ -166,3 +168,83 @@ void ContactManager::removeUserEmail(){
     cout << "NO User found!\n\n";
 }
 
+void ContactManager::removeUserNumber(){
+    ListAllContacts();
+    cout << "Enter User Number to remove from contacts!\n";
+    ulong num;
+    cin >> num;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (num == info[i].number)
+        {
+            info.erase(info.begin()+i);
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
+}
+
+void ContactManager::searchName(){
+    ListAllContacts();
+    cout << "Enter User's First Name to search for in contacts!\n";
+    string fn;
+    cin >> fn;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (fn.compare(info[i].firstName) == 0)
+        {
+            cout << "User Found!Details:\n";
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
+}
+
+void ContactManager::searchNumber(){
+    ListAllContacts();
+    cout << "Enter User's First Name to search for in contacts!\n";
+    ulong num;
+    cin >> num;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (num == info[i].number)
+        {
+            cout << "User Found!Details:\n";
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
+}
+
+void ContactManager::searchEmail(){
+    ListAllContacts();
+    cout << "Enter User's Email to search for in contacts!\n";
+    string em;
+    cin >> em;
+
+    for(int i = 0; i < info.size(); i++)
+    {
+        if (em.compare(info[i].email) == 0)
+        {
+            cout << "User Found!Details:\n";
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            return;
+        }
+    }
+    cout << "NO User found!\n\n";
+}
+
+void ContactManager::backUp(){
+    ofstream file("backup.txt");
+    file << "----------------------<List of all Contacts>-------------------------\n";
+    for(int i = 0; i < info.size(); i++)
+    {
+        file << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+    }
+    file << "-------------------------------------------------------------------\n";
+}
