@@ -62,7 +62,7 @@ void ContactManager::ListAllContacts()
     {
         cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
     }
-    cout << "-------------------------------------------------------------------\n";
+    cout << "---------------------------------------------------------------------\n";
 }
 
 void ContactManager::Edit()
@@ -145,6 +145,7 @@ void ContactManager::removeUserName(){
         if (fn.compare(info[i].firstName) == 0)
         {
             info.erase(info.begin()+i);
+            cout << "\n";
             return;
         }
     }
@@ -162,6 +163,7 @@ void ContactManager::removeUserEmail(){
         if (em.compare(info[i].email) == 0)
         {
             info.erase(info.begin()+i);
+            cout << "\n";
             return;
         }
     }
@@ -179,6 +181,7 @@ void ContactManager::removeUserNumber(){
         if (num == info[i].number)
         {
             info.erase(info.begin()+i);
+            cout << "\n";
             return;
         }
     }
@@ -196,7 +199,7 @@ void ContactManager::searchName(){
         if (fn.compare(info[i].firstName) == 0)
         {
             cout << "User Found!Details:\n";
-            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl << endl;
             return;
         }
     }
@@ -205,7 +208,7 @@ void ContactManager::searchName(){
 
 void ContactManager::searchNumber(){
     ListAllContacts();
-    cout << "Enter User's First Name to search for in contacts!\n";
+    cout << "Enter User's Number to search for in contacts!\n";
     ulong num;
     cin >> num;
 
@@ -214,7 +217,7 @@ void ContactManager::searchNumber(){
         if (num == info[i].number)
         {
             cout << "User Found!Details:\n";
-            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl  << endl;
             return;
         }
     }
@@ -232,7 +235,7 @@ void ContactManager::searchEmail(){
         if (em.compare(info[i].email) == 0)
         {
             cout << "User Found!Details:\n";
-            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
+            cout << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl << endl;
             return;
         }
     }
@@ -247,4 +250,25 @@ void ContactManager::backUp(){
         file << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
     }
     file << "---------------------------------------------------------------------\n";
+    file.close();
+}
+
+void ContactManager::restore(){
+    ifstream file("restore.txt");string line;
+    if (file.is_open())
+    {
+        while(file.good())
+        {
+            getline(file,line);
+            stringstream ss(line);
+            data tmp;
+            ss >> tmp.firstName;
+            ss >> tmp.lastName;
+            ss >> tmp.email;
+            ss >> tmp.number;
+            info.push_back(tmp);
+        }
+    }
+
+    //file.close();
 }
