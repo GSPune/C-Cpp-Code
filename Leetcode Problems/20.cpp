@@ -30,6 +30,6 @@ int main(void)
                 exit(0);}
     }}
 
-    stk.size()>0 ? cout << "false" <<endl:cout << "true" <<endl;
+    stk.size()>0 ? cout << "false" << endl : cout << "true" << endl;
     return 0;
 };
