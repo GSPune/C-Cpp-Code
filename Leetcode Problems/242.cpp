@@ -8,7 +8,7 @@ int main(void)
     if(s.length() != t.length())
         cout << "false\n";
 
-    unordered_map <int,int> m1,m2;
+    unordered_map <char,int> m1,m2;
 
     for (const auto &a:s)
         m1[a]++;
