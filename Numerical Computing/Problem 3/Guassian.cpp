@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// void print_matrix()
+// {
+
+// }
+
 int main()
 {
     string fileL="L_3.txt";
@@ -27,6 +32,11 @@ int main()
         fin >> mat[i][cols - 1]; 
     }
     
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            cout << mat[i][j] << " ";}
+        cout << endl;
+    }
     //Steps
     //1. Reduce to Lower Triangular
     //2. Back Substitution
