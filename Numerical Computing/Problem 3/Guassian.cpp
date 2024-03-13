@@ -16,7 +16,8 @@ int main()
     int rows,cols;
     fin >> rows >> cols;
 
-    cout << "\n rows :: " << rows << "\n cols ::" << cols << endl;
+    cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
+    cout << setprecision(2);
     double mat[rows][cols];
     for (int i =0; i < rows; i++){
         for (int j =0; j < cols-1 ; j++){
@@ -34,11 +35,33 @@ int main()
     
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
-            cout << mat[i][j] << " ";}
+            cout << mat[i][j] << "   ";}
         cout << endl;
     }
+    cout << "\n\n";
     //Steps
     //1. Reduce to Lower Triangular
     //2. Back Substitution
+
+    for (int i = 0; i < rows; i++){
+        int tmp = mat[i][i];
+        for(int j = 0; j < cols; j++){
+            mat[i][j] /= tmp;
+         }
+
+         for(int k = i+1; k < rows;k++){
+            int t2 = mat[k][i];
+            for (int p = 0; p < cols; p++){
+                mat[k][p] -= t2*mat[i][p]; 
+            }
+         }
+     }
+
+     for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            cout << mat[i][j] << "\t";}
+        cout << endl;
+    }
+
     return 0;
 }
