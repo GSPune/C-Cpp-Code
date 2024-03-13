@@ -46,7 +46,8 @@ int main()
     for (int i = 0; i < rows; i++){
         int tmp = mat[i][i];
         for(int j = 0; j < cols; j++){
-            mat[i][j] /= tmp;
+            if (mat[i][j] != 0){
+            mat[i][j] /= tmp;}
          }
 
          for(int k = i+1; k < rows;k++){
