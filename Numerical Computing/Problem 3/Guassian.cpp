@@ -38,7 +38,7 @@ int main()
             cout << mat[i][j] << "   ";}
         cout << endl;
     }
-    cout << "\n\n";
+    cout << "\n";
     //Steps
     //1. Reduce to Lower Triangular
     //2. Back Substitution
