@@ -1,10 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// void print_matrix()
-// {
-
-// }
+void printMatrix(double **mat,int rows,int cols)
+{
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            cout << mat[i][j] << "   ";}
+        cout << endl;
+    }
+    cout << "\n";
+}
 
 int main()
 {
@@ -41,7 +46,6 @@ int main()
     cout << "\n";
     //Steps
     //1. Reduce to Lower Triangular
-    //2. Back Substitution
 
     for (int i = 0; i < rows; i++){
         int tmp = mat[i][i];
@@ -63,6 +67,9 @@ int main()
             cout << mat[i][j] << "\t";}
         cout << endl;
     }
+
+    //2. Back Substitution
+
 
     return 0;
 }
