@@ -5,7 +5,7 @@ void printMatrix(double **mat,int rows,int cols)
 {
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
-            cout << mat[i][j] << "   ";}
+            cout << mat[i][j] << "\t";}
         cout << endl;
     }
     cout << "\n";
@@ -23,9 +23,16 @@ int main()
 
     cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
     cout << setprecision(2);
-    double mat[rows][cols];
+
+    //Dyanmic Allocation;
+    double **mat = new double* [rows];
+    for (int t = 0; t < rows; t++){
+        mat[t] = new double[cols];
+    }
+
+
     for (int i =0; i < rows; i++){
-        for (int j =0; j < cols-1 ; j++){
+        for (int j =0; j < (cols-1) ; j++){
             fin >> mat[i][j];
         }
     }
@@ -69,7 +76,14 @@ int main()
     }
 
     //2. Back Substitution
+    double *ans = new double[cols-2];
+    ans[cols-2] = mat[rows-1][cols-1];
 
+    //free memory
+    delete[] ans;
 
+    for (int j = 0; j < rows; j++)
+        delete mat[j];
+    delete mat;
     return 0;
 }
