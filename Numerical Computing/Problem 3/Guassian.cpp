@@ -52,7 +52,7 @@ int main()
 
          for(int k = i+1; k < rows;k++){
             int t2 = mat[k][i];
-            for (int p = 0; p < cols; p++){
+            for (int p = i; p < cols; p++){
                 mat[k][p] -= t2*mat[i][p]; 
             }
          }
