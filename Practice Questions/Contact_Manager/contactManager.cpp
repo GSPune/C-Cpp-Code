@@ -62,7 +62,7 @@ void ContactManager::ListAllContacts()
     {
         cout << i + 1 << ". " << info[i].firstName << "  " << info[i].lastName <<"  "<< info[i].email <<"  "<< info[i].number << endl;
     }
-    cout << "---------------------------------------------------------------------\n";
+    cout << "---------------------------------------------------------------------\n\n";
 }
 
 void ContactManager::Edit()
@@ -126,8 +126,11 @@ void ContactManager::removeUser(){
     int id;
     cin >> id;
 
-    info.erase(info.begin()+(id-1));
-    cout << "\n";
+    if(id > 0 && id <= info.size()){
+        info.erase(info.begin()+(id-1));
+        cout << "\n";}
+    else
+        cout << "Invalid Input\n";
     // info[id - 1].firstName = "";
     // info[id - 1].lastName = "";
     // info[id - 1].number = 0;
@@ -135,7 +138,7 @@ void ContactManager::removeUser(){
 }
 
 void ContactManager::removeUserName(){
-    ListAllContacts();
+    //ListAllContacts();
     cout << "Enter User First Name to remove from contacts!\n";
     string fn;
     cin >> fn;
@@ -153,7 +156,7 @@ void ContactManager::removeUserName(){
 }
 
 void ContactManager::removeUserEmail(){
-    ListAllContacts();
+    //ListAllContacts();
     cout << "Enter User Email to remove from contacts!\n";
     string em;
     cin >> em;
@@ -171,7 +174,7 @@ void ContactManager::removeUserEmail(){
 }
 
 void ContactManager::removeUserNumber(){
-    ListAllContacts();
+    //ListAllContacts();
     cout << "Enter User Number to remove from contacts!\n";
     ulong num;
     cin >> num;
@@ -211,6 +214,17 @@ void ContactManager::searchNumber(){
     cout << "Enter User's Number to search for in contacts!\n";
     ulong num;
     cin >> num;
+
+    while(1){
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(),'\n');
+            cout << "You have entered wrong input..Please enter again!" <<endl;
+            cin>>num;
+        }
+        if(!cin.fail())
+        break;
+    }
 
     for(int i = 0; i < info.size(); i++)
     {

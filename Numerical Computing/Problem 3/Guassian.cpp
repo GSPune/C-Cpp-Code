@@ -26,7 +26,7 @@ int main()
     // fin.close();
 
     cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
-    cout << setprecision(2);
+    cout << setprecision(3);
 
     //Dynamic Memory Allocation of 2d matrix;
     double **mat = new double* [rows];
@@ -55,7 +55,7 @@ int main()
     //1. Reduce to Lower Triangular
 
     for (int i = 0; i < rows; i++){
-        int tmp = mat[i][i];
+        double tmp = mat[i][i];
         //Make pivots 1
         for(int j = 0; j < cols; j++){
             if (mat[i][j] != 0){
@@ -64,19 +64,22 @@ int main()
         
         //Row Transformations
          for(int k = i+1; k < rows;k++){
-            int t2 = mat[k][i];
+            double t2 = mat[k][i];
+            if (t2 == 0)
+                continue;
             for (int p = i; p < cols; p++){
-                //cout << "Row " << k << "-"
+                cout << "Row " << k << " - " << t2 << "*Row" << i << endl;
                 mat[k][p] -= t2*mat[i][p]; 
             }
          }
-         //printMatrix(mat,rows,cols);
+         printMatrix(mat,rows,cols);
      }
 
     printMatrix(mat,rows,cols);
 
     //2. Back Substitution
     double *ans = new double[cols-2], lhs = 0.0;
+    //double ans[cols-2], lhs = 0.0;
     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
     for (int r = rows - 2; r >= 0; --r){ //starting from 2nd last row
         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
