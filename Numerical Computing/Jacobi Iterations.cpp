@@ -2,15 +2,17 @@
 using namespace std;
 
 double fx(double y,double z){
-    return (5-2*y-z)/3;
+    return (5-2*y-z)/5;
 }
 
 double fy(double x,double z){
-    return (9-2*x-4*z);
+    //return (9-2*x-4*z);
+    return (7-x-z)/(-4);
 }
 
 double fz(double x,double y){
-    return (7-x+4*y);
+    // return (7-x+4*y);
+    return (9-2*x-y)/4;
 }
 int main(){
     double a,b,c,x0,y0,z0;
