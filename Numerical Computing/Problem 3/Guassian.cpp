@@ -23,20 +23,19 @@ int main()
     fin.open(fileL);
     int rows,cols;
     fin >> rows >> cols;
-    // fin.close();
 
     cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
     cout << setprecision(3);
 
     //Dynamic Memory Allocation of 2d matrix;
-    double **mat = new double* [rows];
+    double **mat = new double*[rows];
     for (int t = 0; t < rows; t++){
         mat[t] = new double[cols];
     }
 
     //Read Left Matrix File
-    for (int i =0; i < rows; i++){
-        for (int j =0; j < (cols-1) ; j++){
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < (cols-1) ; j++){
             fin >> mat[i][j];
         }
     }
@@ -49,8 +48,9 @@ int main()
     {
         fin >> mat[i][cols - 1]; 
     }
-    
+    fin.close();
     printMatrix(mat,rows,cols);
+
     //Steps
     //1. Reduce to Lower Triangular
 
@@ -63,7 +63,7 @@ int main()
          }
         
         //Row Transformations
-         for(int k = i+1; k < rows;k++){
+         for(int k = i+1; k < rows ; k++){
             double t2 = mat[k][i];
             if (t2 == 0)
                 continue;
@@ -78,10 +78,11 @@ int main()
     printMatrix(mat,rows,cols);
 
     //2. Back Substitution
-    double *ans = new double[cols-2], lhs = 0.0;
-    //double ans[cols-2], lhs = 0.0;
+    // double *ans,lhs = 0.0;
+    // ans = new double[cols-2];
+    double ans[cols-2], lhs = 0.0;
     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
-    for (int r = rows - 2; r >= 0; --r){ //starting from 2nd last row
+    for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
             lhs += mat[r][c] * ans[c]; 
         }
@@ -89,16 +90,18 @@ int main()
         lhs = 0;
     }
 
+    ofstream fout("4_sol.txt");
     for (int k = 0; k < cols - 1; k++){
-        cout << ans[k] << "\n";
+        fout << ans[k] << "\n";
     }
-    cout << endl;
+    fout.close();
+
 
     //free memory
-    delete[] ans;
-
-    for (int j = 0; j < rows; j++)
-        delete[] mat[j];
+    //delete[] ans;
+    for (int j = 0; j < rows; j++){
+        delete[] mat[j];}
     delete[] mat;
+
     return 0;
 }
