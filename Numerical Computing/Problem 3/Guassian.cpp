@@ -56,19 +56,19 @@ int main()
 
     for (int i = 0; i < rows; i++){
         double tmp = mat[i][i];
-        //Make pivots 1
+        //Make pivot 1 for row i
         for(int j = 0; j < cols; j++){
             if (mat[i][j] != 0){
             mat[i][j] /= tmp;}
          }
         
-        //Row Transformations
+        //Row Transformations for all rows below pivot row i
          for(int k = i+1; k < rows ; k++){
             double t2 = mat[k][i];
             if (t2 == 0)
                 continue;
             for (int p = i; p < cols; p++){
-                cout << "Row " << k << " - " << t2 << "*Row" << i << endl;
+                cout << "Row " << k << " - (" << t2 << ")*Row" << i << endl;
                 mat[k][p] -= t2*mat[i][p]; 
             }
          }
@@ -78,9 +78,9 @@ int main()
     printMatrix(mat,rows,cols);
 
     //2. Back Substitution
-    // double *ans,lhs = 0.0;
-    // ans = new double[cols-2];
-    double ans[cols-2], lhs = 0.0;
+    // double *ans = new double[cols-2];
+    double ans[cols-2];
+    double lhs = 0.0;
     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
     for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
@@ -90,18 +90,19 @@ int main()
         lhs = 0;
     }
 
-    ofstream fout("4_sol.txt");
+    ofstream fout;
+    fout.open("4_sol.txt");
     for (int k = 0; k < cols - 1; k++){
         fout << ans[k] << "\n";
     }
     fout.close();
-
-
-    //free memory
-    //delete[] ans;
+    
+    //free allocated memory
     for (int j = 0; j < rows; j++){
         delete[] mat[j];}
     delete[] mat;
+
+    // delete[] ans;
 
     return 0;
 }
