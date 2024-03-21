@@ -25,7 +25,7 @@ void Matrix::read_matrix(string fileL, string fileR)
     cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
 
     //Dynamic Memory Allocation of 2d matrix;
-    double **mat = new double*[rows];
+    mat = new double*[rows];
     for (int t = 0; t < rows; t++){
         mat[t] = new double[cols];
     }
