@@ -5,6 +5,7 @@ using namespace std;
 
 Matrix::Matrix()
 {
+    mat = NULL;
     rows = cols = 0;
 }
 
@@ -101,10 +102,11 @@ void Matrix::Guassian_elimination(){
 
 Matrix::~Matrix(){
      //free allocated memory
+    if (mat != NULL){
     for (int j = 0; j < rows; j++){
         delete[] mat[j];}
     delete[] mat;
-
+    }
     
 }
 
