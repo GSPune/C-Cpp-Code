@@ -22,7 +22,7 @@ void Matrix::read_matrix(string fileL, string fileR)
     ifstream fin;
     fin.open(fileL);
     fin >> rows >> cols;
-    cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
+    // cout << "Rows :: " << rows << "\nCols :: " << cols << endl;
 
     //Dynamic Memory Allocation of 2d matrix;
     mat = new double*[rows];
@@ -74,11 +74,11 @@ void Matrix::Guassian_elimination(){
          }
          //printMatrix(mat,rows,cols);
      }
-    cout << "Echelon Form ::" << endl;
+    cout << "Echelon Form:" << endl;
     printMatrix(mat,rows,cols);
 
     //2. Back Substitution
-    // double *ans = new double[cols-2];
+    //double *ans = new double[cols-2];
     double ans[cols-2];
     double lhs = 0.0;
     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
@@ -96,6 +96,7 @@ void Matrix::Guassian_elimination(){
         fout << ans[k] << "\n";
     }
     fout.close();
+    //delete[] ans;
 }
 
 Matrix::~Matrix(){
@@ -104,6 +105,6 @@ Matrix::~Matrix(){
         delete[] mat[j];}
     delete[] mat;
 
-    // delete[] ans;
+    
 }
 
