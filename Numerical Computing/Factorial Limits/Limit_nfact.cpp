@@ -10,7 +10,7 @@ int main()
 {
     int n = 1;
     unsigned long long int pmax = 1, max = 1;
-    while (max >= pmax)
+    while (max >= pmax) //until processor breaks
     {
         n++;
         pmax = max;
