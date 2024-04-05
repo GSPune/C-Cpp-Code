@@ -5,7 +5,7 @@ int f(int &x, int c){
     c--;
     if (c == 0) return 1;
     x++;
-    return f(x,c) * x;
+    return f(x,c) * x; //x changes as it is call by reference
 }
 
 int main(){
