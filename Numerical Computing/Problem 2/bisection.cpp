@@ -44,8 +44,10 @@ void BisectionMethod::get_interval(double x1,double x2)
 double BisectionMethod::f(double x)
 {
     //return (2*pow(x,2) - 1);
-    return (4*pow(x,3)-3*x);
+    //return (4*pow(x,3)-3*x);
     //return sin(x * (pi/2)) - x;
+    //return (pow(x,2)-6*x+6);
+    return (pow(x,2)-5*x+3);
 }
 
 void BisectionMethod::bisection()
