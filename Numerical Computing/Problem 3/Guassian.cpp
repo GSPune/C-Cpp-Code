@@ -16,11 +16,19 @@ int main()
     // string fileL="L_3.txt";
     // string fileR="R_3.txt";
 
-    string fileL="L_4*4.txt";
-    string fileR="R_4.txt";
+    // string fileL="L_4*4.txt";
+    // string fileR="R_4.txt";
+    // Numerical Computing/Problem 3/largeMatrices/largeMatrices/L_49_49.txt
+
+    string fileL="largeMatrices//largeMatrices//L_49_49.txt";
+    string fileR="largeMatrices//largeMatrices//R_49.txt";
 
     ifstream fin;
     fin.open(fileL);
+    if(!fin.good()){
+        cout << "Couldn't read the required file...ERROR" << endl;
+        exit(0);
+    }
     int rows,cols;
     fin >> rows >> cols;
 
@@ -91,7 +99,7 @@ int main()
     }
 
     ofstream fout;
-    fout.open("4_sol.txt");
+    fout.open("49_sol.txt");
     for (int k = 0; k < cols - 1; k++){
         fout << ans[k] << "\n";
     }
