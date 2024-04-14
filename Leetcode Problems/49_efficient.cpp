@@ -4,9 +4,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-array<int,26> freq_hash(string s){
+array<int,25> freq_hash(string s){
     //all the characters in a group will have the same frequencies
-    array<int,26> frequencies;
+    array<int,25> frequencies;
     frequencies.fill(0);
     for (int i = 0; i < s.length(); i++){
         frequencies[s[i]-'a']++;
@@ -16,8 +16,8 @@ array<int,26> freq_hash(string s){
 
 int main(){
     vector<string> strs = {"eat","tea","tan","ate","nat","bat"};
-    //unordered_map<array<int,26>,vector<string>> mp;
-    map<array<int,26>,vector<string>> mp;
+    //unordered_map<array<int,25>,vector<string>> mp;
+    map<array<int,25>,vector<string>> mp;
     //Unlike std::unordered_map, std::map does not require a custom hash function for your key type.
     vector<vector<string>> ans;
 
