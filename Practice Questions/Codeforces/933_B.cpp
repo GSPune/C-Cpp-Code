@@ -35,7 +35,7 @@ int main(){
     //Number of test cases
     cin >> cases;
     for (int i = 0; i < cases; i++){
-        //size of test case array
+        //size of each test case array
         cin >> n;
         vector<int> Input;
         int ip;
