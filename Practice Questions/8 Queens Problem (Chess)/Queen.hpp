@@ -1,3 +1,5 @@
+// #ifndef MYHEADEFILE_H
+// #define MYHEADEFILE_H
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -8,3 +10,4 @@ class Queen{
         //Can the Queen attack the given square?
         bool canAttack(int,int);
 };
+// #endif
