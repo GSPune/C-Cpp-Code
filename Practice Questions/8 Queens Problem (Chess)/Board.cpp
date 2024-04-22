@@ -3,6 +3,10 @@
 #include "Board.hpp"
 using namespace std;
 
+int Board::getN(){
+    return N;
+}
+
 Board::Board(){
     // Initialize the chessboard with empty cells
     for (int i = 0; i < N; i++){

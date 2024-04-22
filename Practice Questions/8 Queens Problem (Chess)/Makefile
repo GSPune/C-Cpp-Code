@@ -1,9 +1,19 @@
 CC = g++
 CFLAGS = -I.
 
-board: main.cpp board.cpp queen.cpp
-	$(CC) -o board main.cpp board.cpp queen.cpp \
+final_outp: main.o board.o queen.o
+	$(CC) -o final_outp main.o board.o queen.o
+	
+main.o: main.cpp
+	$(CC) -c main.cpp $(CCFLAGS)
+
+board.o: board.cpp
+	$(CC) -c board.cpp \
+	$(CCFLAGS)
+
+queen.o: queen.cpp
+	$(CC) -c queen.cpp \
 	$(CCFLAGS)
 
 clean:
-	rm -rf board
+	\rm *.o final_outp

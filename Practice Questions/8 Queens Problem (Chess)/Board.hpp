@@ -14,6 +14,7 @@ class Board{
     public:
         Board();
         //Wrapper over SolveRec()
+        int getN();
         bool Solve();
         bool SolveRecursively(int);
         bool isSafe(int,int);
