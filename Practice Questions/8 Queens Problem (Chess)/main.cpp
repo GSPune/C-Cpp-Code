@@ -10,6 +10,6 @@ int main(){
     if (B1.Solve())
         B1.displayBoard();
     else
-        cout << "Not Solvable for N equal to " << B1.getN();
+        cout << "Not Solvable for N equal to " << B1.getN() << endl;
     return 0;
 }
