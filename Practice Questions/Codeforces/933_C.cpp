@@ -25,10 +25,25 @@ int main()
 }
 
 void beautify_string(string s,int l){
-    int count = 0;
+    int count = 0,k = 0;
     for (int i = 0; i < (l - 2); i++){
-        if (s[i] == 'm' && s[i+1] == 'a' && s[i + 2] == 'p' || s[i] == 'p' && s[i+1] == 'i' && s[i + 2] == 'e' )
-            count++;
-    }
+
+        if (s[i] == 'm' && s[i+1] == 'a' && s[i+2] == 'p'){
+            if ((i + 4) < l && (s[i+3] == 'i') && (s[i+4] == 'e')){
+                count++;
+                k = i + 4;
+                i = k;
+            }
+            else{
+                count++;
+                k = i + 1;
+                i = k;
+            }}
+        if (s[i] == 'p' && s[i+1] == 'i' && s[i + 2] == 'e' ){
+                count++;
+                k = i + 2;
+                i = k;
+            }
+        }
     cout << count << endl;
-}
+ }
