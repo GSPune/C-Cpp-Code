@@ -18,7 +18,7 @@ void Matrix::printMatrix(double **mat,int rows,int cols){
     cout << "\n";
 }
 
-void Matrix::read_matrix(string fileL, string fileR)
+void Matrix::readMatrix(string fileL, string fileR)
 {
     ifstream fin;
     fin.open(fileL);
@@ -50,7 +50,7 @@ void Matrix::read_matrix(string fileL, string fileR)
     printMatrix(mat,rows,cols);
 }
 
-void Matrix::Guassian_elimination(){
+void Matrix::guassianElimination(){
 
     //Steps
     //1. Reduce to Lower Triangular

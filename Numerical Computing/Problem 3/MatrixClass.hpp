@@ -13,7 +13,12 @@ class Matrix{
 
         //Standard Operations
         void printMatrix(double**,int, int);
-        void read_matrix(string,string);
+        void readMatrix(string,string);
+
+        //Check for nature of matrix
+        bool isNull();
+        bool isSymmetric(Matrix);
+        bool isDiagonallyDominant(Matrix);
 
         //Operations on matrices
         void addition(Matrix,Matrix);
@@ -21,5 +26,10 @@ class Matrix{
         void multiply(Matrix,Matrix);
 
         //Functions on augmented matrices
-        void Guassian_elimination();
+        void guassianElimination();
+        void lowerUpperDecomposition();
+        void choleskyDecomposition();
+        void guassJacobi();
+        void guassSeidel();
+
 };

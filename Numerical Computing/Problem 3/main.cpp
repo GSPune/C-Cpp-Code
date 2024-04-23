@@ -12,7 +12,7 @@ int main(void)
     cin >> L;
     cin >> R;
 
-    Aug.read_matrix(L,R);
-    Aug.Guassian_elimination();
+    Aug.readMatrix(L,R);
+    Aug.guassianElimination();
     return 0;
 }
