@@ -23,20 +23,50 @@ void Matrix::readMatrixFromUser(){
     cin >> rows >> cols;
     
     //Dynamic Memory Allocation of 2d matrix;
-    mat = new double* [rows];
+    mat = new double* [rows]; //array of pointers
     for (int t = 0; t < rows; t++){
         mat[t] = new double[cols];
     }
-
+    cout << "Enter the elements of the matrix one after another" << endl;
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < (cols) ; j++){
             cin >> mat[i][j];
         }
     }
+
+    printMatrix(mat,rows,cols);
 }
 
-bool Matrix::isDiagonallyDominant(Matrix T){
-    // |a_ii| >= Summation from j = 1 to n of |a_ii| s.t i != j
+bool Matrix::isDiagonallyDominant(){
+    // |a_ii| >= Summation from j = 1 to n of |a_ij| s.t i != j
+    if (mat != NULL){
+        for (int r = 0; r < rows; r++){
+            double sum = 0.0;
+            for (int c = 0; c < cols - 1; (c == r-1) ? c += 2 : c++){
+                if (r == c && c == 0)
+                    continue;
+                sum += fabs(mat[r][c]);
+            }
+            if (fabs(mat[r][r]) <= sum)
+                return false;
+            sum = 0.0;
+        }
+        return true;
+    }
+}
+
+bool Matrix::makeDiagonallyDominant(){
+
+}
+
+void Matrix::guassJacobi(){
+    if (!isDiagonallyDominant())
+        //Try to make the matrix DD
+        makeDiagonallyDominant();
+    double ans[cols-1];
+    for (int i = 0; i < cols-1; i++){
+        ans[i] = 0;
+    }
 }
 
 void Matrix::readMatrixViaFiles(string fileL, string fileR)

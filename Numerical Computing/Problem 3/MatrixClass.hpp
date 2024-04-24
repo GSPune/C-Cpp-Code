@@ -19,7 +19,8 @@ class Matrix{
         //Check for nature of matrix
         bool isNull();
         bool isSymmetric(Matrix);
-        bool isDiagonallyDominant(Matrix);
+        bool isDiagonallyDominant();
+        bool makeDiagonallyDominant();
 
         //Operations on matrices
         void addition(Matrix,Matrix);
