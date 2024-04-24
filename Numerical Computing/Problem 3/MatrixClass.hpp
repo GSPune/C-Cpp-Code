@@ -13,7 +13,8 @@ class Matrix{
 
         //Standard Operations
         void printMatrix(double**,int, int);
-        void readMatrix(string,string);
+        void readMatrixViaFiles(string,string);
+        void readMatrixFromUser();
 
         //Check for nature of matrix
         bool isNull();

@@ -18,7 +18,24 @@ void Matrix::printMatrix(double **mat,int rows,int cols){
     cout << "\n";
 }
 
-void Matrix::readMatrix(string fileL, string fileR)
+void Matrix::readMatrixFromUser(){
+    cout << "Enter the number of rows and cols";
+    cin >> rows >> cols;
+    
+    //Dynamic Memory Allocation of 2d matrix;
+    mat = new double* [rows];
+    for (int t = 0; t < rows; t++){
+        mat[t] = new double[cols];
+    }
+
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < (cols) ; j++){
+            cin >> mat[i][j];
+        }
+    }
+}
+
+void Matrix::readMatrixViaFiles(string fileL, string fileR)
 {
     ifstream fin;
     fin.open(fileL);
