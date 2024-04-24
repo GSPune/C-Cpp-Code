@@ -35,6 +35,10 @@ void Matrix::readMatrixFromUser(){
     }
 }
 
+bool Matrix::isDiagonallyDominant(Matrix T){
+    // |a_ii| >= Summation from j = 1 to n of |a_ii| s.t i != j
+}
+
 void Matrix::readMatrixViaFiles(string fileL, string fileR)
 {
     ifstream fin;
