@@ -3,6 +3,9 @@
 using namespace std;
 #include "MatrixClass.hpp"
 
+int getDDRow(int);
+void swapRows(int,int);
+
 Matrix::Matrix()
 {
     mat = NULL;
@@ -53,10 +56,24 @@ bool Matrix::isDiagonallyDominant(){
         }
         return true;
     }
+    return false;
 }
 
 bool Matrix::makeDiagonallyDominant(){
-
+    for (int r = 0; r < rows; r++){
+        double s = 0.0;
+        for (int c = 0; c < cols; c++){
+            if (r != c)
+                s += fabs(mat[r][c]);
+        }
+        if (s > fabs(mat[r][r])){
+            int index = getDDRow(r);
+            if (index != 1)
+                swapRows(r,index);
+            else
+                return false;
+       }
+    }
 }
 
 void Matrix::guassJacobi(){
@@ -67,6 +84,46 @@ void Matrix::guassJacobi(){
     for (int i = 0; i < cols-1; i++){
         ans[i] = 0;
     }
+}
+
+void Matrix::lowerUpperDecomposition(double **L,double **U){
+    // Matrix L,U;
+    for (int i = 0; i < rows; i++){
+        U[i][i] = 1;
+    }
+
+    for (int r = 0; r < rows; r++){
+        for (int c = 0; c < cols; c++){
+            //1st col of L
+            if (c >= r)
+                L[c][r] = computeL(mat,c,r);
+        }
+        for (int c = 0;c < cols; c++){
+            //Go across 1st row of U
+            if (c > r)
+                U[r][c] = computeU(mat,r,c);
+        }
+    }
+}
+
+double computeL(double **mat,int row,int col){
+    double ans,sum = 0.0;
+    ans = mat[row][col];
+    for (int k = 0; k < col; k++){
+        sum += L[row][k]*U[k][col];
+    }
+    ans -= sum;
+    return ans;
+}
+
+double computeU(double **mat,int row,int col){
+    double ans,sum = 0.0;
+    ans = mat[row][col];
+    for (int k = 0; k < row; k++){
+        sum += L[row][k]*U[k][col];
+    }
+    ans -= sum;
+    return ans/L[row][row];
 }
 
 void Matrix::readMatrixViaFiles(string fileL, string fileR)
