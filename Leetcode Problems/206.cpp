@@ -19,9 +19,13 @@ int main(){
     head->next = new ListNode(2);
     head->next->next = new ListNode(3);
 
+    for (ListNode *tmp = head; tmp != NULL; tmp = tmp->next)
+    {
+        cout << tmp->val << endl;
+    }
     ListNode *temp1 = NULL, *temp2 = head->next;
 
-    while(head!= nullptr){
+    while(head->next != nullptr){
         head->next = temp1;
         temp1 = head;
         head = temp2;
@@ -29,6 +33,10 @@ int main(){
     }
     head -> next = temp1;
 
+    for (ListNode *tmp = head; tmp != NULL; tmp = tmp->next)
+    {
+        cout << tmp->val << endl;
+    }
     return 0;
 
 }
