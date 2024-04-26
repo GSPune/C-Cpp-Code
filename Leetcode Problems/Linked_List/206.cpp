@@ -39,4 +39,11 @@ int main(){
     }
     return 0;
 
+    //freeing nodes
+    while(head != nullptr){
+        ListNode *tmp = head->next;
+        delete head;
+        head = tmp;
+    }
+
 }
