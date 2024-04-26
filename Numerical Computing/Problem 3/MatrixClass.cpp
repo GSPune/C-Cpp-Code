@@ -3,8 +3,6 @@
 using namespace std;
 #include "MatrixClass.hpp"
 
-int getDDRow(int);
-void swapRows(int,int);
 
 Matrix::Matrix()
 {
@@ -12,7 +10,17 @@ Matrix::Matrix()
     rows = cols = 0;
 }
 
-void Matrix::printMatrix(double **mat,int rows,int cols){
+// void Matrix::printMatrix(double **mat,int rows,int cols){
+//     for (int i = 0; i < rows; i++){
+//         for (int j = 0; j < cols; j++){
+//             cout << mat[i][j] << "\t";}
+//         cout << endl;
+//     }
+//     cout << "\n";
+// }
+
+void Matrix::display(){
+    int r = this->rows, c = this->cols;
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             cout << mat[i][j] << "\t";}
@@ -37,7 +45,7 @@ void Matrix::readMatrixFromUser(){
         }
     }
 
-    printMatrix(mat,rows,cols);
+    // printMatrix(mat,rows,cols);
 }
 
 bool Matrix::isDiagonallyDominant(){
@@ -61,18 +69,41 @@ bool Matrix::isDiagonallyDominant(){
 
 bool Matrix::makeDiagonallyDominant(){
     for (int r = 0; r < rows; r++){
-        double s = 0.0;
-        for (int c = 0; c < cols; c++){
-            if (r != c)
-                s += fabs(mat[r][c]);
-        }
+        //find a non DD row
+            double s = 0.0;
+            for (int c = 0; c < cols - 1; c++){
+                if (r != c)
+                    s += fabs(mat[r][c]);
+            }
         if (s > fabs(mat[r][r])){
             int index = getDDRow(r);
-            if (index != 1)
+            if (index != -1)
                 swapRows(r,index);
             else
                 return false;
        }
+    }
+    return true;
+}
+
+int Matrix::getDDRow(int row){
+    for (int i = row + 1; i < rows; i++){
+        double s = 0.0;
+        for (int j = 0; j < cols-1; j++){
+            //check for DD Row corresponding to {row}(th) column
+            if (row != j)
+                s += fabs(mat[i][j]);
+        }
+        if (fabs(mat[row][row]) >= s)
+            return i;
+    }
+    cout << "No Diagonally Domininant row found after Row " << row << endl;
+    return -1;
+}
+
+void Matrix::swapRows(int r1, int r2){
+    for (int i = 0; i < cols; i++){
+        swap(mat[r1][i],mat[r2][i]);
     }
 }
 
@@ -95,36 +126,37 @@ void Matrix::lowerUpperDecomposition(double **L,double **U){
     for (int r = 0; r < rows; r++){
         for (int c = 0; c < cols; c++){
             //1st col of L
-            if (c >= r)
-                L[c][r] = computeL(mat,c,r);
+            cout << "test";
+            if (c >= r){}
+                // L[c][r] = computeL(mat,c,r);
         }
         for (int c = 0;c < cols; c++){
             //Go across 1st row of U
-            if (c > r)
-                U[r][c] = computeU(mat,r,c);
+            if (c > r){}
+                // U[r][c] = computeU(mat,r,c);
         }
     }
 }
 
-double computeL(double **mat,int row,int col){
-    double ans,sum = 0.0;
-    ans = mat[row][col];
-    for (int k = 0; k < col; k++){
-        sum += L[row][k]*U[k][col];
-    }
-    ans -= sum;
-    return ans;
-}
+// double computeL(double **mat,int row,int col){
+//     // double ans,sum = 0.0;
+//     // ans = mat[row][col];
+//     // for (int k = 0; k < col; k++){
+//     //     sum += L[row][k]*U[k][col];
+//     // }
+//     // ans -= sum;
+//     // return ans;
+// }
 
-double computeU(double **mat,int row,int col){
-    double ans,sum = 0.0;
-    ans = mat[row][col];
-    for (int k = 0; k < row; k++){
-        sum += L[row][k]*U[k][col];
-    }
-    ans -= sum;
-    return ans/L[row][row];
-}
+// double computeU(double **mat,int row,int col){
+//     // double ans,sum = 0.0;           
+//     // ans = mat[row][col];
+//     // for (int k = 0; k < row; k++){
+//     //     sum += L[row][k]*U[k][col];
+//     // }
+//     // ans -= sum;
+//     // return ans/L[row][row];
+// }
 
 void Matrix::readMatrixViaFiles(string fileL, string fileR)
 {
@@ -155,7 +187,7 @@ void Matrix::readMatrixViaFiles(string fileL, string fileR)
         fin >> mat[i][cols - 1]; 
     }
     fin.close();
-    printMatrix(mat,rows,cols);
+    display();
 }
 
 void Matrix::guassianElimination(){
@@ -184,7 +216,8 @@ void Matrix::guassianElimination(){
          //printMatrix(mat,rows,cols);
      }
     cout << "Echelon Form:" << endl;
-    printMatrix(mat,rows,cols);
+    // printMatrix(mat,rows,cols);
+    display();
 
     //2. Back Substitution
     //double *ans = new double[cols-2];
