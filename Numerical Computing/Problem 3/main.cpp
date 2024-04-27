@@ -17,9 +17,9 @@ int main(void)
 
     Matrix T;
     T.readMatrixFromUser();
-    if (T.isDiagonallyDominant())
-        cout << "Y" << endl;
-    else
-        cout << "N" << endl;
+    T.display();
+    T.guassJacobi();
+    T.guassSeidel();
+    
     return 0;
 }

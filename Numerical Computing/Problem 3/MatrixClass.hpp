@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+#define TOLERANCE pow(10,-5)
 class Matrix{
     double **mat;
     int rows,cols;
@@ -23,11 +23,13 @@ class Matrix{
         bool isDiagonallyDominant();
         bool makeDiagonallyDominant();
 
-        //helping functions
+        //helper functions
         int getDDRow(int);
         void swapRows(int,int);
         double computeL(double **,int,int);
         double computeU(double **,int,int);
+        void backSubstituion();
+        void forwardSubstitution();
 
         //Operations on matrices
         void addition(Matrix,Matrix);
