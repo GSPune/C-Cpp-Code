@@ -1,19 +1,19 @@
-CC = g++
-CFLAGS = -I.
+CC=g++
+CFLAGS=-I.
+DEPS=Queen.hpp Board.hpp
+TARGET=final_outp
+OBJS=Board.o Queen.o main.o
+	  
 
-final_outp: main.o board.o queen.o
-	$(CC) -o final_outp main.o board.o queen.o
-	
-main.o: main.cpp
-	$(CC) -c main.cpp $(CCFLAGS)
+$(TARGET): $(OBJS)
+	$(CC) -o $@ $^
 
-board.o: board.cpp
-	$(CC) -c board.cpp \
-	$(CCFLAGS)
+%.o: %.cpp
+	$(CC) -c $< \
+	$(CFLAGS) 
 
-queen.o: queen.cpp
-	$(CC) -c queen.cpp \
-	$(CCFLAGS)
+# $(CC) -c $< $(CCFLAGS)
+# $(CC) -c $< -o $@
 
 clean:
-	\rm *.o final_outp
+	rm -f *.o final_outp
