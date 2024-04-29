@@ -15,5 +15,7 @@ $(TARGET): $(OBJS)
 # $(CC) -c $< $(CCFLAGS)
 # $(CC) -c $< -o $@
 
+.PHONY: clean
+
 clean:
 	rm -f *.o final_outp
