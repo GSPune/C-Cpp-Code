@@ -18,6 +18,7 @@ int main(void)
     Matrix T;
     T.readMatrixFromUser();
     T.display();
+    // T.makeDiagonallyDominant();
     T.guassJacobi();
     T.guassSeidel();
     
