@@ -1,12 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define TOLERANCE pow(10,-5)
+
 class Matrix{
     double **mat;
     int rows,cols;
     public:
         //construct object(s)
         Matrix();
+        Matrix(int,int);
 
         //Free up memory
         ~Matrix();
@@ -38,7 +40,7 @@ class Matrix{
 
         //Functions on augmented matrices
         void guassianElimination();
-        void lowerUpperDecomposition(double**,double**);
+        void lowerUpperDecomposition();
         void choleskyDecomposition();
         void guassJacobi();
         void guassSeidel();
