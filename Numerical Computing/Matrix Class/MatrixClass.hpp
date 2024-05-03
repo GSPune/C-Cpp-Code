@@ -28,8 +28,8 @@ class Matrix{
         //helper functions
         int getDDRow(int);
         void swapRows(int,int);
-        double computeL(double **,int,int);
-        double computeU(double **,int,int);
+        double computeL(double **,double **,double **,int,int);
+        double computeU(double **,double **,double **,int,int);
         void backSubstituion();
         void forwardSubstitution();
 
@@ -40,7 +40,7 @@ class Matrix{
 
         //Functions on augmented matrices
         void guassianElimination();
-        void lowerUpperDecomposition();
+        vector<Matrix> lowerUpperDecomposition();
         void choleskyDecomposition();
         void guassJacobi();
         void guassSeidel();

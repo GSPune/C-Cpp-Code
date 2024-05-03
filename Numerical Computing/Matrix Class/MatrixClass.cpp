@@ -209,11 +209,12 @@ void Matrix::guassSeidel(){
         }
 }
 
-void Matrix::lowerUpperDecomposition(){
-    Matrix M1(this->rows,this->cols),M2(this->rows,this->cols);
+vector<Matrix> Matrix::lowerUpperDecomposition(){
+    Matrix M1(this->rows,this->cols),M2(rows,cols);
     //To use operator overloading here
     double **U = M1.mat;
     double **L = M2.mat;
+    //Approach -- Crout's Method
     for (int i = 0; i < rows; i++){
         U[i][i] = 1;
     }
@@ -221,38 +222,37 @@ void Matrix::lowerUpperDecomposition(){
     for (int r = 0; r < rows; r++){
         for (int c = 0; c < cols; c++){
             //Go first across the 1st col of L
-            cout << "test";
             if (c >= r){
-                L[c][r] = computeL(mat,c,r);
+                L[c][r] = computeL(mat,L,U,c,r);
             }
         }
         for (int c = 0;c < cols; c++){
             //Go across 1st row of U
             if (c > r){
-                U[r][c] = computeU(mat,r,c);
+                U[r][c] = computeU(mat,U,L,r,c);
             }
         }
     }
 }
 
-double computeL(double **mat,int row,int col){
-//     // double ans,sum = 0.0;
-//     // ans = mat[row][col];
-//     // for (int k = 0; k < col; k++){
-//     //     sum += L[row][k]*U[k][col];
-//     // }
-//     // ans -= sum;
-//     // return ans;
+double computeL(double **mat,double **L,double **U,int row,int col){
+    double ans,sum = 0.0;
+    ans = mat[row][col];
+    for (int k = 0; k < col; k++){
+        sum += L[row][k]*U[k][col];
+    }
+    ans -= sum;
+    return ans;
  }
 
-double computeU(double **mat,int row,int col){
-//     // double ans,sum = 0.0;           
-//     // ans = mat[row][col];
-//     // for (int k = 0; k < row; k++){
-//     //     sum += L[row][k]*U[k][col];
-//     // }
-//     // ans -= sum;
-//     // return ans/L[row][row];
+double computeU(double **mat,double **U,double **L,int row,int col){
+    double ans,sum = 0.0;           
+    ans = mat[row][col];
+    for (int k = 0; k < row; k++){
+        sum += L[row][k]*U[k][col];
+    }
+    ans -= sum;
+    return ans/L[row][row];
 }
 
 void Matrix::readMatrixViaFiles(string fileL, string fileR)
