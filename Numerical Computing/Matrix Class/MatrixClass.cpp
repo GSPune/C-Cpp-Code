@@ -8,6 +8,7 @@ Matrix::Matrix()
 {
     mat = NULL;
     rows = cols = 0;
+    // cout<<"\n dc -> created object @ :: "<<this<<endl;
 }
 
 Matrix::Matrix(int r,int c) : rows(r), cols(c){
@@ -22,6 +23,23 @@ Matrix::Matrix(int r,int c) : rows(r), cols(c){
             mat[i][j] = 0;
         }
     }
+    // cout<<"\n pc => created object @ :: "<<this<<endl;
+}
+
+Matrix::Matrix(const Matrix& T){
+    // cout<<"\n copyc => created object @ :: "<<this<<endl;
+    rows = T.rows;
+    cols = T.cols;
+    mat = new double*[rows];
+    for (int t = 0; t < rows; t++){
+        mat[t] = new double[cols]; //each pointer pointing to a mem. block of size 'cols'
+    }
+    //deep copy is copying the memory not the pointer
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            mat[i][j] = T.mat[i][j];
+        }
+    }  
 }
 
 void Matrix::display(){
@@ -35,7 +53,7 @@ void Matrix::display(){
 }
 
 void Matrix::readMatrixFromUser(){
-    cout << "Enter the number of rows and cols";
+    cout << "Enter the number of rows and cols : ";
     cin >> rows >> cols;
     
     //Dynamic Memory Allocation of 2d matrix;
@@ -210,7 +228,10 @@ void Matrix::guassSeidel(){
 }
 
 vector<Matrix> Matrix::lowerUpperDecomposition(){
-    Matrix M1(this->rows,this->cols),M2(rows,cols);
+    // vector<Matrix> D(2);
+    vector<Matrix> D;
+    Matrix M1(this->rows,this->cols);
+    Matrix M2(rows,cols);
     //To use operator overloading here
     double **U = M1.mat;
     double **L = M2.mat;
@@ -233,9 +254,14 @@ vector<Matrix> Matrix::lowerUpperDecomposition(){
             }
         }
     }
+    // M1.display();
+    D.push_back(M1);
+    D.push_back(M2);
+    // D.emplace_back(M1);
+    return D;
 }
 
-double computeL(double **mat,double **L,double **U,int row,int col){
+double Matrix::computeL(double **mat,double **L,double **U,int row,int col){
     double ans,sum = 0.0;
     ans = mat[row][col];
     for (int k = 0; k < col; k++){
@@ -245,7 +271,7 @@ double computeL(double **mat,double **L,double **U,int row,int col){
     return ans;
  }
 
-double computeU(double **mat,double **U,double **L,int row,int col){
+double Matrix::computeU(double **mat,double **U,double **L,int row,int col){
     double ans,sum = 0.0;           
     ans = mat[row][col];
     for (int k = 0; k < row; k++){
@@ -339,12 +365,12 @@ void Matrix::guassianElimination(){
 }
 
 Matrix::~Matrix(){
-     //free allocated memory
+    //free allocated memory
+    // cout << "Calling Destructor for Object @"<< this <<endl;
     if (mat != NULL){
     for (int j = 0; j < rows; j++){
         delete[] mat[j];}
     delete[] mat;
     }
-    
 }
 
