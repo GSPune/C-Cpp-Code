@@ -9,6 +9,7 @@ class Matrix{
         //construct object(s)
         Matrix();
         Matrix(int,int);
+        Matrix(const Matrix&);
 
         //Free up memory
         ~Matrix();
