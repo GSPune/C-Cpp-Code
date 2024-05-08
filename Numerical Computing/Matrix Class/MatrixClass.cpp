@@ -3,7 +3,7 @@
 using namespace std;
 #include "MatrixClass.hpp"
 
-
+// The default constructor does only shallow copy. 
 Matrix::Matrix()
 {
     mat = NULL;
@@ -34,7 +34,7 @@ Matrix::Matrix(const Matrix& T){
     for (int t = 0; t < rows; t++){
         mat[t] = new double[cols]; //each pointer pointing to a mem. block of size 'cols'
     }
-    //deep copy is copying the memory not the pointer
+    //deep copy is copying the memory, not the pointer
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             mat[i][j] = T.mat[i][j];
@@ -363,6 +363,22 @@ void Matrix::guassianElimination(){
     fout.close();
     //delete[] ans;
 }
+
+//pass answer array as reference
+double* Matrix::backSubstituion(double** M, double*& ans){
+    double lhs = 0.0;
+    ans[cols-2] = M[rows-1][cols-1];
+    for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
+        for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
+            lhs += M[r][c] * ans[c]; 
+        }
+        ans[r] = (M[r][cols - 1] - lhs)/M[r][r];
+        lhs = 0;
+    }
+    return ans;
+}
+
+// double* Matrix::forwardSubstitution(double** M, double*& ans){}
 
 Matrix::~Matrix(){
     //free allocated memory

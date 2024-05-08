@@ -27,12 +27,13 @@ class Matrix{
         bool makeDiagonallyDominant();
 
         //helper functions
+        void transpose(double **);
         int getDDRow(int);
         void swapRows(int,int);
         double computeL(double **,double **,double **,int,int);
         double computeU(double **,double **,double **,int,int);
-        void backSubstituion();
-        void forwardSubstitution();
+        double* backSubstituion(double **,double*&);
+        double* forwardSubstitution(double **,double*&);
 
         //Operations on matrices
         void addition(Matrix,Matrix);
