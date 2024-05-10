@@ -37,7 +37,7 @@ void Matrix::guassianElimination(){
     // backSubstitution<double,k>(mat,ans);
 
     ofstream fout;
-    fout.open("TextFiles(InputMatrices)//3_sol.txt");
+    fout.open("Output Matrices//3_sol2.txt");
     for (int k = 0; k < cols - 1; k++){
         fout << ans[k] << "\n";
     }

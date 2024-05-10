@@ -1,18 +1,16 @@
 using namespace std;
-// #include "MatrixClass.hpp"
+#include "MatrixClass.hpp"
 // #include "gnuplot-iostream.h"
-#include "MatrixClass.cpp"
 // #include "guassianElimination.cpp"
 
 int main(void)
 {
     string L,R;
-    L = "TextFiles(InputMatrices)//L_3.txt";
-    R = "TextFiles(InputMatrices)//R_3.txt";
+    L = "TextFiles(Input Matrices)//L_3.txt";
+    R = "TextFiles(Input Matrices)//R_3.txt";
     Matrix Aug;
 
     Aug.readMatrixViaFiles(L,R);
-    // Aug.display();
     Aug.guassianElimination();
 
     // Matrix T;

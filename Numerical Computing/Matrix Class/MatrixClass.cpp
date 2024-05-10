@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 #include <cmath>
 using namespace std;
-// #include "MatrixClass.hpp"
-#include "guassianElimination.cpp"
+#include "MatrixClass.hpp"
+// #include "guassianElimination.cpp"
 
 // The default constructor does only shallow copy. 
 Matrix::Matrix()
