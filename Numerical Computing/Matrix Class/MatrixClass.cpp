@@ -117,11 +117,11 @@ int Matrix::getDDRow(int row){
             if (row != j)
                 s += fabs(mat[i][j]);
         }
-        if (fabs(mat[row][row]) >= s)
+        if (fabs(mat[i][row]) >= s)
             return i;
     }
     cout << "No Diagonally Domininant row found after Row " << row << endl;
-    return -1;
+    return (-1);
 }
 
 void Matrix::swapRows(int r1, int r2){
@@ -130,157 +130,103 @@ void Matrix::swapRows(int r1, int r2){
     }
 }
 
-void Matrix::guassJacobi(){
-    if (!isDiagonallyDominant())
-        //Try to make the matrix DD
-        makeDiagonallyDominant();
-    bool flag = true;
-    int count = 0;
-    double var[cols-1],prev[cols-1],sum = 0.0;
-    for (int i = 0; i < cols-1; i++){
-        // initailise the vallues of the variables to 0
-        var[i] = prev[i] = 0;
-    }
+// void Matrix::guassJacobi(){
+//     if (!isDiagonallyDominant())
+//         //Try to make the matrix DD
+//         makeDiagonallyDominant();
+//     bool flag = true;
+//     int count = 0;
+//     double var[cols-1],prev[cols-1],sum = 0.0;
+//     for (int i = 0; i < cols-1; i++){
+//         // initailise the vallues of the variables to 0
+//         var[i] = prev[i] = 0;
+//     }
 
-    // Condition : |P{n+1}-P{n}| <= Tolerance
-    while(flag){
-        for (int i = 0; i < cols-1; i++){
-            // update previous values with current ones
-            prev[i] = var[i];
-        }
+//     // Condition : |P{n+1}-P{n}| <= Tolerance
+//     while(flag){
+//         for (int i = 0; i < cols-1; i++){
+//             // update previous values with current ones
+//             prev[i] = var[i];
+//         }
 
-        for(int r = 0; r < rows; r++){
-            double lhs = 0.0;
-            for (int c = 0; c < cols-1; c++){
-                if (r != c){
-                    lhs += mat[r][c]*prev[c];
-                }
-            }
-            lhs = (-1)*lhs + mat[r][cols-1];
-            //current values of the variables
-            var[r] = lhs/mat[r][r];
-        }
+//         for(int r = 0; r < rows; r++){
+//             double lhs = 0.0;
+//             for (int c = 0; c < cols-1; c++){
+//                 if (r != c){
+//                     lhs += mat[r][c]*prev[c];
+//                 }
+//             }
+//             lhs = (-1)*lhs + mat[r][cols-1];
+//             //current values of the variables
+//             var[r] = lhs/mat[r][r];
+//         }
 
-        // for (int k = 0; k < cols-1; k++){
-        //     sum += pow(prev[k]-var[k],2);
-        // }
+//         // for (int k = 0; k < cols-1; k++){
+//         //     sum += pow(prev[k]-var[k],2);
+//         // }
 
-        sum = pow(prev[0]-var[0],2);
-        // cout << sqrt(sum) << endl;
-        // cout << TOLERANCE << endl << endl;
+//         sum = pow(prev[0]-var[0],2);
+//         // cout << sqrt(sum) << endl;
+//         // cout << TOLERANCE << endl << endl;
 
-        if (sqrt(sum) <= TOLERANCE){
-            flag = false;
-        }
-        count++;
-    }
-    cout << "Iterations for Jacobi ::" << count << endl;
-    for (int i = 0; i < cols-1; i++){
-            // print the values
-            cout << var[i] << endl;
-        }
+//         if (sqrt(sum) <= TOLERANCE){
+//             flag = false;
+//         }
+//         count++;
+//     }
+//     cout << "Iterations for Jacobi ::" << count << endl;
+//     for (int i = 0; i < cols-1; i++){
+//             // print the values
+//             cout << var[i] << endl;
+//         }
 
-}
+// }
 
-void Matrix::guassSeidel(){
-    if (!isDiagonallyDominant())
-        //Try to make the matrix DD
-        makeDiagonallyDominant();
-    bool flag = true;
-    int count = 0;
-    double var[cols-1],prev,sum = 0.0;
-    for (int i = 0; i < cols-1; i++){
-        // initailise the vallues of the variables to 0
-        var[i] = 0;
-    }
-    // Condition : |P{n+1}-P{n}| <= Tolerance
-    while(flag){
-        prev = var[0];
-        for(int r = 0; r < rows; r++){
-            double lhs = 0.0;
-            for (int c = 0; c < cols-1; c++){
-                if (r != c){
-                    lhs += mat[r][c]*var[c];
-                }
-            }
-            lhs = (-1)*lhs + mat[r][cols-1];
-            //current values of the variables
-            var[r] = lhs/mat[r][r];
-        }
+// void Matrix::guassSeidel(){
+//     if (!isDiagonallyDominant())
+//         //Try to make the matrix DD
+//         makeDiagonallyDominant();
+//     bool flag = true;
+//     int count = 0;
+//     double var[cols-1],prev,sum = 0.0;
+//     for (int i = 0; i < cols-1; i++){
+//         // initailise the vallues of the variables to 0
+//         var[i] = 0;
+//     }
+//     // Condition : |P{n+1}-P{n}| <= Tolerance
+//     while(flag){
+//         prev = var[0];
+//         for(int r = 0; r < rows; r++){
+//             double lhs = 0.0;
+//             for (int c = 0; c < cols-1; c++){
+//                 if (r != c){
+//                     lhs += mat[r][c]*var[c];
+//                 }
+//             }
+//             lhs = (-1)*lhs + mat[r][cols-1];
+//             //current values of the variables
+//             var[r] = lhs/mat[r][r];
+//         }
 
-        // for (int k = 0; k < cols-1; k++){
-        //     sum += pow(prev[k]-var[k],2);
-        // }
+//         // for (int k = 0; k < cols-1; k++){
+//         //     sum += pow(prev[k]-var[k],2);
+//         // }
 
-        sum = pow(prev-var[0],2);
-        // cout << sqrt(sum) << endl;
-        // cout << TOLERANCE << endl << endl;
+//         sum = pow(prev-var[0],2);
+//         // cout << sqrt(sum) << endl;
+//         // cout << TOLERANCE << endl << endl;
 
-        if (sqrt(sum) <= TOLERANCE){
-            flag = false;
-        }
-        count++;
-    }
-    cout << "Iterations for Seidel ::" << count << endl;
-    for (int i = 0; i < cols-1; i++){
-            // print the values
-            cout << var[i] << endl;
-        }
-}
-
-vector<Matrix> Matrix::lowerUpperDecomposition(){
-    // vector<Matrix> D(2);
-    vector<Matrix> D;
-    Matrix M1(this->rows,this->cols);
-    Matrix M2(rows,cols);
-    //To use operator overloading here
-    double **U = M1.mat;
-    double **L = M2.mat;
-    //Approach -- Crout's Method
-    for (int i = 0; i < rows; i++){
-        U[i][i] = 1;
-    }
-
-    for (int r = 0; r < rows; r++){
-        for (int c = 0; c < cols; c++){
-            //Go first across the 1st col of L
-            if (c >= r){
-                L[c][r] = computeL(mat,L,U,c,r);
-            }
-        }
-        for (int c = 0;c < cols; c++){
-            //Go across 1st row of U
-            if (c > r){
-                U[r][c] = computeU(mat,U,L,r,c);
-            }
-        }
-    }
-    // M1.display();
-    D.push_back(M1);
-    D.push_back(M2);
-    // D.emplace_back(M1);
-    return D;
-}
-
-double Matrix::computeL(double **mat,double **L,double **U,int row,int col){
-    double ans,sum = 0.0;
-    ans = mat[row][col];
-    for (int k = 0; k < col; k++){
-        sum += L[row][k]*U[k][col];
-    }
-    ans -= sum;
-    return ans;
- }
-
-double Matrix::computeU(double **mat,double **U,double **L,int row,int col){
-    double ans,sum = 0.0;           
-    ans = mat[row][col];
-    for (int k = 0; k < row; k++){
-        sum += L[row][k]*U[k][col];
-    }
-    ans -= sum;
-    return ans/L[row][row];
-}
+//         if (sqrt(sum) <= TOLERANCE){
+//             flag = false;
+//         }
+//         count++;
+//     }
+//     cout << "Iterations for Seidel ::" << count << endl;
+//     for (int i = 0; i < cols-1; i++){
+//             // print the values
+//             cout << var[i] << endl;
+//         }
+// }
 
 void Matrix::readMatrixViaFiles(string fileL, string fileR)
 {
@@ -314,59 +260,7 @@ void Matrix::readMatrixViaFiles(string fileL, string fileR)
     display();
 }
 
-// void Matrix::guassianElimination(){
-
-//     //Steps
-//     //1. Reduce to Lower Triangular
-
-//     for (int i = 0; i < rows; i++){
-//         double tmp = mat[i][i];
-//         //Make pivot 1 for row i
-//         for(int j = 0; j < cols; j++){
-//             if (mat[i][j] != 0){
-//             mat[i][j] /= tmp;}
-//          }
-        
-//         //Row Transformations for all rows below pivot row i
-//          for(int k = i+1; k < rows ; k++){
-//             double t2 = mat[k][i];
-//             if (t2 == 0)
-//                 continue;
-//             for (int p = i; p < cols; p++){
-//                 //cout << "Row " << k << " - (" << t2 << ")*Row" << i << endl;
-//                 mat[k][p] -= t2*mat[i][p]; 
-//             }
-//          }
-//          //printMatrix(mat,rows,cols);
-//      }
-//     cout << "Echelon Form:" << endl;
-//     // printMatrix(mat,rows,cols);
-//     display();
-
-//     //2. Back Substitution
-//     //double *ans = new double[cols-2];
-//     double ans[cols-2];
-//     double lhs = 0.0;
-//     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
-//     for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
-//         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
-//             lhs += mat[r][c] * ans[c]; 
-//         }
-//         ans[r] = (mat[r][cols - 1] - lhs)/mat[r][r];
-//         lhs = 0;
-//     }
-
-//     ofstream fout;
-//     fout.open("4_sol.txt");
-//     for (int k = 0; k < cols - 1; k++){
-//         fout << ans[k] << "\n";
-//     }
-//     fout.close();
-//     //delete[] ans;
-// }
-
 //pass answer array as reference
-
 // void Matrix::backSubstitution(double** M, double (&ans)[]){
 // template<class T, std::size_t S>
 void Matrix::backSubstitution(double** M,double* ans){
@@ -382,7 +276,9 @@ void Matrix::backSubstitution(double** M,double* ans){
     // return ans;
 }
 
-// double* Matrix::forwardSubstitution(double** M, double*& ans){}
+void Matrix::forwardSubstitution(double** M, double* ans){
+
+}
 
 Matrix::~Matrix(){
     //free allocated memory

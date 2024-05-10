@@ -1,5 +1,4 @@
 #include "MatrixClass.hpp"
-// #include "MatrixClass.cpp"
 
 void Matrix::guassianElimination(){
 
@@ -37,7 +36,9 @@ void Matrix::guassianElimination(){
     // backSubstitution<double,k>(mat,ans);
 
     ofstream fout;
-    fout.open("Output Matrices//3_sol2.txt");
+    string outf = "Output Matrices//" + to_string(cols-1) + "_sol.txt";
+    fout.open(outf);
+    // fout.open("Output Matrices//3_sol.txt");
     for (int k = 0; k < cols - 1; k++){
         fout << ans[k] << "\n";
     }

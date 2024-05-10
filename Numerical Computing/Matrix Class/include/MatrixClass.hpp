@@ -36,8 +36,7 @@ class Matrix{
         // template<class T, std::size_t S>
         // void backSubstitution(T **,T(&) [S]);
         void backSubstitution(double **,double*);//size of ans array is not known untill runtime!
-
-        double* forwardSubstitution(double **,double*&);
+        void forwardSubstitution(double **,double*);
 
         //Operations on matrices
         void addition(Matrix,Matrix);
