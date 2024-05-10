@@ -32,7 +32,11 @@ class Matrix{
         void swapRows(int,int);
         double computeL(double **,double **,double **,int,int);
         double computeU(double **,double **,double **,int,int);
-        double* backSubstituion(double **,double*&);
+
+        // template<class T, std::size_t S>
+        // void backSubstitution(T **,T(&) [S]);
+        void backSubstitution(double **,double*);//size of ans array is not known untill runtime!
+
         double* forwardSubstitution(double **,double*&);
 
         //Operations on matrices

@@ -1,31 +1,29 @@
 using namespace std;
-#include "MatrixClass.cpp"
+// #include "MatrixClass.hpp"
 // #include "gnuplot-iostream.h"
-
+#include "MatrixClass.cpp"
+// #include "guassianElimination.cpp"
 
 int main(void)
 {
-    // string L,R;
-    // Matrix Aug;
-    // cout << "Enter the files which contain the left " <<
-    // "and right partitions of augmented matrix one by one::" << endl;
-    // cin >> L;
-    // cin >> R;
+    string L,R;
+    L = "TextFiles(InputMatrices)//L_3.txt";
+    R = "TextFiles(InputMatrices)//R_3.txt";
+    Matrix Aug;
 
-    // Aug.readMatrixViaFiles(L,R);
-    // Aug.guassianElimination();
+    Aug.readMatrixViaFiles(L,R);
+    // Aug.display();
+    Aug.guassianElimination();
 
-    Matrix T;
-    T.readMatrixFromUser();
-    T.display();
-    // T.makeDiagonallyDominant();
-    // T.guassJacobi();
-    // T.guassSeidel();
-    vector<Matrix> ans;
-    ans = T.lowerUpperDecomposition();
-    ans[0].display();
-    ans[1].display();
-
-    
+    // Matrix T;
+    // T.readMatrixFromUser();
+    // T.display();
+    // // T.makeDiagonallyDominant();
+    // // T.guassJacobi();
+    // // T.guassSeidel();
+    // vector<Matrix> ans;
+    // ans = T.lowerUpperDecomposition();
+    // ans[0].display();
+    // ans[1].display();
     return 0;
 }

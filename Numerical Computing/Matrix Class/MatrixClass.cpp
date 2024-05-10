@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 #include <cmath>
 using namespace std;
-#include "MatrixClass.hpp"
+// #include "MatrixClass.hpp"
+#include "guassianElimination.cpp"
 
 // The default constructor does only shallow copy. 
 Matrix::Matrix()
@@ -313,59 +314,62 @@ void Matrix::readMatrixViaFiles(string fileL, string fileR)
     display();
 }
 
-void Matrix::guassianElimination(){
+// void Matrix::guassianElimination(){
 
-    //Steps
-    //1. Reduce to Lower Triangular
+//     //Steps
+//     //1. Reduce to Lower Triangular
 
-    for (int i = 0; i < rows; i++){
-        double tmp = mat[i][i];
-        //Make pivot 1 for row i
-        for(int j = 0; j < cols; j++){
-            if (mat[i][j] != 0){
-            mat[i][j] /= tmp;}
-         }
+//     for (int i = 0; i < rows; i++){
+//         double tmp = mat[i][i];
+//         //Make pivot 1 for row i
+//         for(int j = 0; j < cols; j++){
+//             if (mat[i][j] != 0){
+//             mat[i][j] /= tmp;}
+//          }
         
-        //Row Transformations for all rows below pivot row i
-         for(int k = i+1; k < rows ; k++){
-            double t2 = mat[k][i];
-            if (t2 == 0)
-                continue;
-            for (int p = i; p < cols; p++){
-                //cout << "Row " << k << " - (" << t2 << ")*Row" << i << endl;
-                mat[k][p] -= t2*mat[i][p]; 
-            }
-         }
-         //printMatrix(mat,rows,cols);
-     }
-    cout << "Echelon Form:" << endl;
-    // printMatrix(mat,rows,cols);
-    display();
+//         //Row Transformations for all rows below pivot row i
+//          for(int k = i+1; k < rows ; k++){
+//             double t2 = mat[k][i];
+//             if (t2 == 0)
+//                 continue;
+//             for (int p = i; p < cols; p++){
+//                 //cout << "Row " << k << " - (" << t2 << ")*Row" << i << endl;
+//                 mat[k][p] -= t2*mat[i][p]; 
+//             }
+//          }
+//          //printMatrix(mat,rows,cols);
+//      }
+//     cout << "Echelon Form:" << endl;
+//     // printMatrix(mat,rows,cols);
+//     display();
 
-    //2. Back Substitution
-    //double *ans = new double[cols-2];
-    double ans[cols-2];
-    double lhs = 0.0;
-    ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
-    for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
-        for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
-            lhs += mat[r][c] * ans[c]; 
-        }
-        ans[r] = (mat[r][cols - 1] - lhs)/mat[r][r];
-        lhs = 0;
-    }
+//     //2. Back Substitution
+//     //double *ans = new double[cols-2];
+//     double ans[cols-2];
+//     double lhs = 0.0;
+//     ans[cols-2] = mat[rows-1][cols-1]; //value of last variable stored
+//     for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
+//         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
+//             lhs += mat[r][c] * ans[c]; 
+//         }
+//         ans[r] = (mat[r][cols - 1] - lhs)/mat[r][r];
+//         lhs = 0;
+//     }
 
-    ofstream fout;
-    fout.open("4_sol.txt");
-    for (int k = 0; k < cols - 1; k++){
-        fout << ans[k] << "\n";
-    }
-    fout.close();
-    //delete[] ans;
-}
+//     ofstream fout;
+//     fout.open("4_sol.txt");
+//     for (int k = 0; k < cols - 1; k++){
+//         fout << ans[k] << "\n";
+//     }
+//     fout.close();
+//     //delete[] ans;
+// }
 
 //pass answer array as reference
-double* Matrix::backSubstituion(double** M, double*& ans){
+
+// void Matrix::backSubstitution(double** M, double (&ans)[]){
+// template<class T, std::size_t S>
+void Matrix::backSubstitution(double** M,double* ans){
     double lhs = 0.0;
     ans[cols-2] = M[rows-1][cols-1];
     for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
@@ -375,7 +379,7 @@ double* Matrix::backSubstituion(double** M, double*& ans){
         ans[r] = (M[r][cols - 1] - lhs)/M[r][r];
         lhs = 0;
     }
-    return ans;
+    // return ans;
 }
 
 // double* Matrix::forwardSubstitution(double** M, double*& ans){}

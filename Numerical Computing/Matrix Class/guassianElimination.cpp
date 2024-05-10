@@ -32,14 +32,15 @@ void Matrix::guassianElimination(){
 
     //2. Back Substitution
     //double *ans = new double[cols-2];
-    double ans[cols-2];
-    backSubstitution<double,cols-2>(mat,ans);
+    double* ans = new double[cols-2];
+    backSubstitution(mat,ans);
+    // backSubstitution<double,k>(mat,ans);
 
     ofstream fout;
-    fout.open("//TextFiles(InputMatrices)//3_sol.txt");
+    fout.open("TextFiles(InputMatrices)//3_sol.txt");
     for (int k = 0; k < cols - 1; k++){
         fout << ans[k] << "\n";
     }
     fout.close();
-    //delete[] ans;
+    delete[] ans;
 }
