@@ -179,7 +179,45 @@ void Matrix::backSubstitution(double** M,double* ans){
 }
 
 void Matrix::forwardSubstitution(double** M, double* ans){
+    double lhs;
+    ans[0] = M[0][cols-1]/M[0][0];
+    for (int r = 1; r < rows - 1; r++){ //starting from second row
+        for (int c = 0; c < r ; c++){  //starting from the element just after pivot position
+            lhs += M[r][c] * ans[c]; 
+        }
+        ans[r] = (M[r][cols - 1] - lhs)/M[r][r];
+        lhs = 0;
+    } 
 
+    // for (int i = 0; i < cols-1; i++){
+    //         // print the values
+    //         cout << ans[i] << endl;
+    // }
+}
+
+bool Matrix::isSymmetric(){
+    for(int i = 0; i < rows; i++){
+        for (int j = 0; j< cols - 1; j++){
+            if(i > j){
+                if(mat[i][j] != mat[j][i])
+                    return false;
+            }
+        }
+    }
+    return true;
+}
+
+vector<vector<int>> Matrix::transpose(){
+    vector<vector<double>> M(rows,vector<double>(cols));
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < (cols) ; j++){
+            //since we are dealing with transpose of a lower triangular matrix
+            if(i >= j)
+                M[j][i] = mat[i][j];
+            else
+                M[i][j] = 0;         
+        }
+    }
 }
 
 Matrix::~Matrix(){

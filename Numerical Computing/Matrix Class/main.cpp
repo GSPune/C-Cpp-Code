@@ -1,8 +1,7 @@
 using namespace std;
 #include "MatrixClass.hpp"
 // #include "gnuplot-iostream.h"
-// #include "guassianElimination.cpp"
-
+//Testing ground.
 int main(void)
 {
     // string L,R;
@@ -16,9 +15,10 @@ int main(void)
     Matrix T;
     T.readMatrixFromUser();
     T.display();
+    // T.forwardSubstitution(M,ans);
     // T.makeDiagonallyDominant();
-    T.guassJacobi();
-    T.guassSeidel();
+    // T.guassJacobi();
+    // T.guassSeidel();
     // vector<Matrix> ans;
     // ans = T.lowerUpperDecomposition();
     // ans[0].display();

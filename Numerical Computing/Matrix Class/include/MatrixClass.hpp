@@ -22,12 +22,12 @@ class Matrix{
 
         //Check for nature of matrix
         bool isNull();
-        bool isSymmetric(Matrix);
+        bool isSymmetric();
         bool isDiagonallyDominant();
         bool makeDiagonallyDominant();
 
         //helper functions
-        void transpose(double **);
+        vector<vector<int>> transpose();
         int getDDRow(int);
         void swapRows(int,int);
         double computeL(double **,double **,double **,int,int);
