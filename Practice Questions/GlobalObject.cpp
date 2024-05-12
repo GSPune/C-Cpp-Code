@@ -1,4 +1,4 @@
-//Testing some OOPs concepts...
+//Testing some OOPs concepts...with global objects,constructors and destructors
 #include <bits/stdc++.h>
 using namespace std;
 
