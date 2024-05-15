@@ -27,7 +27,9 @@ class Matrix{
         bool makeDiagonallyDominant();
 
         //helper functions
-        vector<vector<int>> transpose();
+        double getLii(int,double**);
+        double getLij(int,int,double**);
+        vector<vector<double>> transpose();
         int getDDRow(int);
         void swapRows(int,int);
         double computeL(double **,double **,double **,int,int);
