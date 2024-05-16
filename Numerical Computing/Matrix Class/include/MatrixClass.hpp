@@ -48,7 +48,7 @@ class Matrix{
         //Functions on augmented matrices
         void guassianElimination();
         vector<Matrix> lowerUpperDecomposition();
-        void choleskyDecomposition();
+        vector<Matrix> choleskyDecomposition();
         void guassJacobi();
         void guassSeidel();
 

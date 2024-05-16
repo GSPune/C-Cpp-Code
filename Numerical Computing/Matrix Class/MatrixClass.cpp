@@ -35,7 +35,7 @@ Matrix::Matrix(const Matrix& T){
     for (int t = 0; t < rows; t++){
         mat[t] = new double[cols]; //each pointer pointing to a mem. block of size 'cols'
     }
-    //deep copy is copying the memory, not the pointer
+    //deep copy is copying the memory values, not the pointer
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             mat[i][j] = T.mat[i][j];
@@ -207,17 +207,18 @@ bool Matrix::isSymmetric(){
     return true;
 }
 
-vector<vector<int>> Matrix::transpose(){
+vector<vector<double>> Matrix::transpose(){
     vector<vector<double>> M(rows,vector<double>(cols));
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < (cols) ; j++){
-            //since we are dealing with transpose of a lower triangular matrix
+            //since we are dealing with transpose of a "lower" triangular matrix
             if(i >= j)
                 M[j][i] = mat[i][j];
             else
                 M[i][j] = 0;         
         }
     }
+    return M;
 }
 
 Matrix::~Matrix(){
