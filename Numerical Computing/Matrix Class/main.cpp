@@ -15,6 +15,11 @@ int main(void)
     Matrix T;
     T.readMatrixFromUser();
     T.display();
+    vector<Matrix> ans;
+    ans = T.choleskyDecomposition();
+    ans[0].display();
+    ans[1].display();
+
     // T.forwardSubstitution(M,ans);
     // T.makeDiagonallyDominant();
     // T.guassJacobi();

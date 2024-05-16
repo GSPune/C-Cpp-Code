@@ -25,12 +25,13 @@ vector<Matrix> Matrix::choleskyDecomposition(){
     vector<vector<double>> T(rows,vector<double>(cols));
     if(!this->isSymmetric()){
         cout << "Matrix is not symmetric.We can't factorise via Cholesky Method!" <<endl;
-        return;
+        exit(0);
+        // return;
     }
 
     for(int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < cols-1; j++){
+        for (int j = 0; j < cols; j++){
             //go through each column and also compute separately for diagonal and 
             //lower non-diag elements
             if (j >= i){ //searching in lower triangular part only
@@ -43,6 +44,12 @@ vector<Matrix> Matrix::choleskyDecomposition(){
     }
 
     T = L1.transpose();
-    L2.mat = T;
-    
+    for (int i = 0; i < rows; i++){
+        for (int j = 0; j < cols; j++){
+            L2.mat[i][j] = T[i][j];
+        }
+    }
+   Result.push_back(L1);
+   Result.push_back(L2);
+   return Result; 
 }

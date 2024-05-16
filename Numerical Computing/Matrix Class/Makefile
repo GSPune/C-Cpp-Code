@@ -5,7 +5,7 @@ ODIR = ./obj
 TARGET = matrix
 OBJS = main.o guassianElimination.o MatrixClass.o \
 	   lowerUpperDecomposition.o guassJacobi.o \
-	   guassSeidel.o
+	   guassSeidel.o choleskiFactorization.o
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS));
 
