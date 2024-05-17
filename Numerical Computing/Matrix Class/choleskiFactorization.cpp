@@ -38,7 +38,7 @@ vector<Matrix> Matrix::choleskyDecomposition(){
                 if (i == j)
                     L[j][j] = getLii(j,L);
                 else    
-                    L[j][i] = getLij(i,j,L);//going colwise
+                    L[j][i] = getLij(j,i,L);//going colwise
             }
         }
     }

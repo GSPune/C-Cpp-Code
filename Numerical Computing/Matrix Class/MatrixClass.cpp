@@ -44,7 +44,7 @@ Matrix::Matrix(const Matrix& T){
 }
 
 void Matrix::display(){
-    int r = this->rows, c = this->cols;
+    // int r = this->rows, c = this->cols;
     for (int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             cout << mat[i][j] << "\t";}
