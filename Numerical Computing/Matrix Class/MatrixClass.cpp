@@ -121,7 +121,7 @@ int Matrix::getDDRow(int row){
             return i;
     }
     cout << "No Diagonally Domininant row found after Row " << row << endl;
-    return (-1);
+    return -1;
 }
 
 void Matrix::swapRows(int r1, int r2){
@@ -181,7 +181,7 @@ void Matrix::backSubstitution(double** M,double* ans){
 void Matrix::forwardSubstitution(double** M, double* ans){
     double lhs;
     ans[0] = M[0][cols-1]/M[0][0];
-    for (int r = 1; r < rows - 1; r++){ //starting from second row
+    for (int r = 1; r < rows; r++){ //starting from second row
         for (int c = 0; c < r ; c++){  //starting from the element just after pivot position
             lhs += M[r][c] * ans[c]; 
         }
