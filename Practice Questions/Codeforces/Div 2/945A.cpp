@@ -6,35 +6,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void max_draws(int s,vector<int> P){
-    if(s == 0)
-        cout << -1 << endl;
-    else{
-        //greedy approach?--improve
-        if(s % 2 == 0){
-            int k = (P[2]+P[1])/2;
-            cout << ((P[2]+P[1])/2 + (P[0]+P[1])/2) << endl;
-        }
-        else
-            cout << -1 << endl;
+void max_draws(vector<int> &P){
+    int count = 0, t1 = 1, t2=2;
+    while(P[t1] != 0){
+        P[t1]--;P[t2]--;
+        count++;
     }
+    t1--;
+    while(P[t2] != 0 && P[t1] != 0){
+        P[t1]--;P[t2]--;
+        count++;
+    }
+    cout << count << endl;
 }
 
 int main(){
-    int cases,sum;
-    vector<int> scores;
+    int cases;
+    vector<int> scores(3,0);
     //Number of test cases
     cin >> cases;
     for (int i = 0; i < cases; i++){
-        for (int b = 0;b < 3; b++){
-            int temp;
-            cin >> temp;
-            scores.push_back(temp);
-            sum += temp;
+        for (auto &e : scores){
+            // cout << "val::" << e<<endl;
+            cin >> e;
         }
         // sum = accumulate(scores.begin(), scores.end(), 0);
-        max_draws(sum,scores);
-        sum = 0;
+        max_draws(scores);
     }
     return 0;
 }
