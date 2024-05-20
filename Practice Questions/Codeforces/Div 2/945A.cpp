@@ -7,17 +7,12 @@
 using namespace std;
 
 void max_draws(vector<int> &P){
-    int count = 0, t1 = 1, t2=2;
-    while(P[t1] != 0){
-        P[t1]--;P[t2]--;
-        count++;
+    int sum = accumulate(P.begin(), P.end(), 0);
+    if (sum % 2 != 0){
+        cout << -1 << endl;return;
     }
-    t1--;
-    while(P[t2] != 0 && P[t1] != 0){
-        P[t1]--;P[t2]--;
-        count++;
-    }
-    cout << count << endl;
+    else
+        cout << min(P[0]+P[1],sum/2) << endl;
 }
 
 int main(){
@@ -30,7 +25,6 @@ int main(){
             // cout << "val::" << e<<endl;
             cin >> e;
         }
-        // sum = accumulate(scores.begin(), scores.end(), 0);
         max_draws(scores);
     }
     return 0;
