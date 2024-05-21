@@ -8,8 +8,9 @@ class RF{
         RF(){
             TOL = pow(10,-5);
         };
-        RF(double TOL):TOL(TOL){};
-        void solve();
+        //RF(double TOL):TOL(TOL){};
+        //an abstract base class
+        virtual void solve() =0; //pure virtual function
 };
 
 class bisection: public RF{
