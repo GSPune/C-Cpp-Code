@@ -6,19 +6,30 @@ class RF{
         double root, TOL;
     public:
         RF(){
-            TOL = pow(10,-5);
+            TOL = pow(10,-5);//default value
         };
-        //RF(double TOL):TOL(TOL){};
+        //RF(double T):TOL(T){};
         //an abstract base class
         virtual void solve() =0; //pure virtual function
+        void displayRoot();
 };
 
 class bisection: public RF{
-    double f();
+    double a,b;
+    public:
+        bisection();
+        void solve();
+        void find_interval();
+        void get_interval(double,double);
+        double f(double);
 };
 
 class newtonRaphson: public RF{
-    double f();
+    public:
+        newtonRaphson();
+        double f(double);
+        double f_dash(double);
+        void solve();
 };
 
 class fixedPoint: public RF{
