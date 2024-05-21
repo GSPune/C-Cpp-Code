@@ -11,7 +11,6 @@ class RF{
         //RF(double T):TOL(T){};
         //an abstract base class
         virtual void solve() =0; //pure virtual function
-        void displayRoot();
 };
 
 class bisection: public RF{
@@ -22,16 +21,19 @@ class bisection: public RF{
         void find_interval();
         void get_interval(double,double);
         double f(double);
+        void displayRoot();
 };
 
 class newtonRaphson: public RF{
     public:
-        newtonRaphson();
+        // newtonRaphson();
         double f(double);
         double f_dash(double);
         void solve();
+        void displayRoot();
 };
 
 class fixedPoint: public RF{
     double f();
+    void displayRoot();
 };

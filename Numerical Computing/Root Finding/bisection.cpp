@@ -73,7 +73,11 @@ void bisection::solve()
             a = m;
         }
     } while(fabs(c) > TOL);
-    
+
     this->root = m;
     cout << "The approximated root via Bisection Method is " << m << "!" << endl;
+}
+
+void bisection::displayRoot(){
+    cout << "The approximated root via Bisection Method is " << root << "!" << endl;
 }
