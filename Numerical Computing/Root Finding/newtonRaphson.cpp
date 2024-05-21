@@ -14,7 +14,7 @@ void newtonRaphson::solve(){
     do{
         prev = x0;
         if (isinf(f(x0)/f_dash(x0))){
-            cout << "Try another guess value..denominator is infinity";
+            cout << "Try another guess value..denominator is ZERO!" << endl;
             exit(1);
         }
         x0 = x0 - (f(x0)/f_dash(x0));

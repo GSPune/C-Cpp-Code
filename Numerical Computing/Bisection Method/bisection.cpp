@@ -12,7 +12,7 @@ BisectionMethod::BisectionMethod(double tol)
 void BisectionMethod::find_interval()
 {
     double x1 = 0,x2 = 1;
-    while(x1 > -50 && x2 < 50)
+    while(x1 > -500 && x2 < 500)
     {
         if (f(x1) * f(x2) < 0)
         {
@@ -22,7 +22,8 @@ void BisectionMethod::find_interval()
             return;
         }
         else{
-            x1--;x2++;}
+            x1--;x2++;
+        }
     }
 
     cout << " NO Valid Bracketing Interval found!" <<endl;

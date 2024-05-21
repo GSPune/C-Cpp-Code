@@ -9,6 +9,7 @@ class RF{
             TOL = pow(10,-5);//default value
         };
         //RF(double T):TOL(T){};
+
         //an abstract base class
         virtual void solve() =0; //pure virtual function
 };
@@ -34,6 +35,8 @@ class newtonRaphson: public RF{
 };
 
 class fixedPoint: public RF{
-    double f();
-    void displayRoot();
+    public:
+        double f(double);
+        void solve();
+        void displayFixedPoint();
 };
