@@ -102,8 +102,10 @@ bool Matrix::makeDiagonallyDominant(){
             int index = getDDRow(r);
             if (index != -1)
                 swapRows(r,index);
-            else
+            else{
+                cout << "Couldn't make the matrix diagonally dominant!" << endl;
                 return false;
+            }
        }
     }
     return true;
@@ -167,7 +169,7 @@ void Matrix::readMatrixViaFiles(string fileL, string fileR)
 // template<class T, std::size_t S>
 void Matrix::backSubstitution(double** M,double* ans){
     double lhs = 0.0;
-    ans[cols-2] = M[rows-1][cols-1];
+    ans[cols-2] = M[rows-1][cols-1]/M[cols-2][cols-2];
     for (int r = rows - 2; r >= 0; r--){ //starting from 2nd last row
         for (int c = r + 1; c < cols - 1; c++){  //starting from the element just after pivot position
             lhs += M[r][c] * ans[c]; 

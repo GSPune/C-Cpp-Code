@@ -3,9 +3,11 @@ using namespace std;
 #define TOLERANCE pow(10,-5)
 
 class Matrix{
-    double **mat;
-    int rows,cols;
+    // double **mat;
+    // int rows,cols;
     public:
+        double **mat;
+        int rows,cols;
         //construct object(s)
         Matrix();
         Matrix(int,int);
@@ -49,6 +51,8 @@ class Matrix{
         void guassianElimination();
         vector<Matrix> lowerUpperDecomposition();
         vector<Matrix> choleskyDecomposition();
+        void solveSystemViaLU();
+        void solveSystemViaCholesky();
         void guassJacobi();
         void guassSeidel();
 

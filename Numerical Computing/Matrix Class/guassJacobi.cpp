@@ -12,7 +12,7 @@ void Matrix::guassJacobi(){
         var[i] = prev[i] = 0;
     }
 
-    // Condition : |P{n+1}-P{n}| <= Tolerance
+    // Condition for terminating : |P{n+1}-P{n}| <= Tolerance OR |X{i+1} - X{i}| < Tol
     while(flag){
         for (int i = 0; i < cols-1; i++){
             // update previous values with current ones
