@@ -106,6 +106,7 @@ void Matrix::solveSystemViaLU(){
         cout << X[i] << endl;
     }
     cout << endl;
+    
     delete[] Z;
     delete[] X;
 //----------------------------------------Solving via LU Decomposition-----------------------------------------

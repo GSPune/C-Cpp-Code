@@ -14,6 +14,7 @@ int main(void)
     Aug.solveSystemViaLU();
     Aug.readMatrixViaFiles(L,R);
     Aug.solveSystemViaCholesky();
+    Aug.guassianElimination();
     
     // Aug.guassianElimination();
 
@@ -25,18 +26,18 @@ int main(void)
     // ans[0].display();
     // ans[1].display();
 
-    // Matrix T;
-    // string L,R;
-    // L = "TextFiles(Input Matrices)//testLU_L4.txt";
-    // R = "TextFiles(Input Matrices)//testLU_R4.txt";
-    // T.readMatrixViaFiles(L,R);
+    Matrix T;
+    string Lt,Rt;
+    Lt = "TextFiles(Input Matrices)//L_3.txt";
+    Rt = "TextFiles(Input Matrices)//R_3.txt";
+    T.readMatrixViaFiles(Lt,Rt);
+    T.guassJacobi();
+    T.guassSeidel();
     // // T.display();
     // T.guassianElimination();
 
     // T.readMatrixViaFiles(L,R);
     // T.readMatrixFromUser();
-    // // T.guassJacobi();
-    // // T.guassSeidel();
     // vector<Matrix> ans;
     // ans = T.lowerUpperDecomposition();
     // ans[0].display();

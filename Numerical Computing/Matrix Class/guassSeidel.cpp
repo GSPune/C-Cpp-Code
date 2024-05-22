@@ -39,9 +39,10 @@ void Matrix::guassSeidel(){
         }
         count++;
     }
-    cout << "Iterations for Seidel ::" << count << endl;
+    cout << "Iterations for Seidel : " << count << ". Solutions are :: " << endl;
     for (int i = 0; i < cols-1; i++){
             // print the values
             cout << var[i] << endl;
     }
+    cout << endl;
 }

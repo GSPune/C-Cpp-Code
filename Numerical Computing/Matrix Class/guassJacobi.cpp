@@ -44,10 +44,10 @@ void Matrix::guassJacobi(){
         }
         count++;
     }
-    cout << "Iterations for Jacobi ::" << count << endl;
+    cout << "Iterations for Jacobi : " << count << ". Solutions are :: " << endl;
     for (int i = 0; i < cols-1; i++){
             // print the values
             cout << var[i] << endl;
         }
-
+    cout << endl;
 }

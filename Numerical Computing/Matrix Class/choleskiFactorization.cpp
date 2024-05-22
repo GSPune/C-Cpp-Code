@@ -107,5 +107,8 @@ void Matrix::solveSystemViaCholesky(){
         cout << X[i] << endl;
     }
     cout << endl;
+
+    delete[] Z;
+    delete[] X;
 //----------------------------------------Solving via Choleski Decomposition-----------------------------------------
 }
