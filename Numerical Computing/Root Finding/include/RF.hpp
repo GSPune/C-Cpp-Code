@@ -6,7 +6,7 @@ class RF{
         double root, TOL;
     public:
         RF(){
-            TOL = pow(10,-5);//default value
+            TOL = pow(10,-6);//default value
         };
         //RF(double T):TOL(T){};
 
@@ -32,6 +32,7 @@ class newtonRaphson: public RF{
         double f_dash(double);
         void solve();
         void displayRoot();
+        bool check_guess(double);
 };
 
 class fixedPoint: public RF{
