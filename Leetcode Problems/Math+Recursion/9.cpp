@@ -1,6 +1,5 @@
-/*Given a signed 32-bit integer x, return x with its digits reversed. 
-If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1],
-then return 0.*/
+//Palindrome Number
+//Given an integer x, return true if x is a palindrome, and false otherwise.
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,9 +17,20 @@ int reverse(long long int x,long long int k){
     //Tail Recursion
 }
 
+
+bool isPalindrome(int x) {
+    long int m = x;
+    if (x < 0)
+        return false;
+    if (reverse(m,0) == x)
+        return true;
+    else
+        return false;
+}
+
 int main(void)
 {
-    long long int x = -321;
-    cout << reverse(x,0) << endl;
+    int x = 118151811;
+    cout << isPalindrome(x) << endl;
     return 0;
 }
