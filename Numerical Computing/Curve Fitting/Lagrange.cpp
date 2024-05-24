@@ -21,9 +21,9 @@ double denominator(int i,vector<Point> P,int n){
 }
 
 double lagrangePolynomial(double x,int n,vector<Point> P){
-    double res;
+    double res = 0.0;
     for (int i = 0; i < n; i++){
-        res += P[i].y * (numerator(x,i,P,n)/denominator(i,P,n));
+        res += (P[i].y) * (numerator(x,i,P,n)/denominator(i,P,n));
     }
     return res;
 }
