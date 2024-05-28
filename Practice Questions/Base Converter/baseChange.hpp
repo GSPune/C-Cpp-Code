@@ -7,6 +7,6 @@ class baseChange{
     public:
         baseChange();
         void print();
-        void convertNumber(int);
-        void mapToChar(int);
+        void convertNumber();
+        char mapToChar(int);
 };
