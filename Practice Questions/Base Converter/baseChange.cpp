@@ -19,9 +19,8 @@ char baseChange::mapToChar(int r){
     if (r < 10){
         return char(r+48);
     }
-    else
-        //Convert ASCII Value to Corresponding Character Value
-        return char(r+55);
+    //Convert ASCII Value to Corresponding Character Value
+    return char(r+55);
 }
 
 void baseChange::print(){
