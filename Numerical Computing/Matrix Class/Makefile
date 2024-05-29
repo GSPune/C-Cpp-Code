@@ -6,7 +6,7 @@ TARGET = matrix
 OBJS = main.o guassianElimination.o MatrixClass.o \
 	   lowerUpperDecomposition.o guassJacobi.o \
 	   guassSeidel.o choleskiFactorization.o \
-	   inverse.o
+	   inverseGuassJordan.o
 
 OBJ = $(patsubst %,$(ODIR)/%,$(OBJS));
 

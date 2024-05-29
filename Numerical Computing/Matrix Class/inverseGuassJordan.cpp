@@ -30,17 +30,16 @@ Matrix Matrix::inverse(){
                 I.mat[k][p] -= t2*I.mat[i][p];
             }
         }
-        //printMatrix(mat,rows,cols);
     }
-    I.display();
+    // I.display();
 
     //Now to reduce the upper triangular part to identity
     //Row Transformations for all rows ABOVE pivot row q
     for (int q = rows-1; q >= 0; q--){
         for (int t = q-1; t >= 0; t--){
             double x = mat[t][q];
-            // if (x == 0)
-            //     continue;
+            if (x == 0)
+                continue;
             for (int c = cols-1; c >= 0; c --){
                 mat[t][c] -= x*mat[q][c];
                 I.mat[t][c] -= x*I.mat[q][c];
