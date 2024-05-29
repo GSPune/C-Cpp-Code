@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define TOLERANCE pow(10,-5)
+#define TOLERANCE pow(10,-6)
 
 class Matrix{
     // double **mat;
@@ -46,6 +46,8 @@ class Matrix{
         void addition(Matrix,Matrix);
         void substraction(Matrix,Matrix);
         void multiply(Matrix,Matrix);
+        double determinant();
+        Matrix inverse();
 
         //Functions on augmented matrices
         void guassianElimination();
