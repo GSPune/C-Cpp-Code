@@ -223,6 +223,29 @@ vector<vector<double>> Matrix::transpose(){
     return M;
 }
 
+double Matrix::determinant(){
+    //Reduce to upper triangular (row echelon)
+    for (int i = 0; i < rows; i++){
+
+        double tmp = mat[i][i];
+        //Row Transformations for all rows below pivot row i
+        for(int k = i+1; k < rows ; k++){
+            double t2 = mat[k][i]; //i gives us the current pivot element column
+            if (t2 == 0)
+                continue;
+            for (int p = 0; p < cols; p++){
+                //cout << "Row " << k << " - (" << t2 << ")*Row" << i << endl;
+                mat[k][p] -= (t2/tmp)*mat[i][p]; 
+            }
+        }
+    }
+    display();
+    double det = 1.0;
+    for (int p = 0; p < rows; p++)
+        det *= mat[p][p];
+    return det;
+}
+
 Matrix::~Matrix(){
     //free allocated memory
     // cout << "Calling Destructor for Object @"<< this <<endl;
