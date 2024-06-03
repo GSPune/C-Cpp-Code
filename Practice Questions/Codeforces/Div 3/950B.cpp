@@ -9,16 +9,15 @@ using namespace std;
 void favCube(int n,int f,int k,vector<int> val){
     int favnum = val[f-1];
     sort(val.rbegin(),val.rend());
-    for (int i = 0; i < k; i++){
-        if(val[i] == favnum){
-            if(i == k-1 && val[k] == favnum){
-                cout << "MAYBE" << endl;
-                return;
-            }
-            else{
-                cout << "YES" << endl;return;
-            }
-        }
+
+    if (val[k-1] == val[k]){
+        cout << "MAYBE" << endl;
+        return;
+    }
+
+    for(int i = 0; i < k; i++){
+        if(val[i] == favnum)
+            cout << "YES" << endl;return;
     }
     cout << "NO" << endl;
 }
