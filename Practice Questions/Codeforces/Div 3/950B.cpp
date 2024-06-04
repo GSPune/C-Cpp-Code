@@ -10,14 +10,19 @@ void favCube(int n,int f,int k,vector<int> val){
     int favnum = val[f-1];
     sort(val.rbegin(),val.rend());
 
-    if (val[k-1] == val[k]){
+    //check for k = n case..all cubes removed
+    if (k == n){
+        cout << "YES" << endl;return;}
+
+    if (val[k-1] == val[k] && val[k] == favnum){
         cout << "MAYBE" << endl;
         return;
     }
 
     for(int i = 0; i < k; i++){
-        if(val[i] == favnum)
+        if(val[i] == favnum){
             cout << "YES" << endl;return;
+        }
     }
     cout << "NO" << endl;
 }
