@@ -31,20 +31,14 @@ string search(string k,TrieNode *root){
     for(int i = 0; i < k.length(); ++i){
         int index = k[i] - 'a';
         if(curr->child[index] == NULL){
-            if(!curr->isEnd)
-                return "";
-            else
-                return match;
+            return "";
         }
-        if(curr->isEnd)
-            return match;
         match += k[i];
         curr = curr->child[index];
+        if(curr->isEnd)
+            return match;       
     }
-    if (curr->isEnd)
-        return match;
-    else
-        return "";
+    return "";
 }
 
 string replaceWords(vector<string>& dictionary, string sentence) {
