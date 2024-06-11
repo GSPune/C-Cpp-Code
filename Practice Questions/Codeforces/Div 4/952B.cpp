@@ -7,18 +7,18 @@ using namespace std;
 void solve(){
     int n;
     cin >> n;
-    int ans = 0,k = 1,sum = 0,max = 0,x;
+    int ans = 0,sum = 0,m = 0,x;
     for (x = 2; x < (n+1); x++){
-        while(k <= (n/x)){
-            sum = x*((k*(k+1))/2);
-            if(max < sum){
-                max = sum;
-                ans = x;
-            }
-            k++;
+        // sum = (pow(n,2) + (x*n))/(2*x);
+        int k = n/x;
+        sum = (x)*((k*(k+1))/2);
+        // m == max(m,sum) ? ans : ans = x;
+        if(m < max(m,sum)){
+            m = max(m,sum);
+            ans = x;
         }
     }
-    cout << x << endl;
+    cout << ans << endl;
 }
 
 int main(){
