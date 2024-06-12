@@ -74,22 +74,23 @@ int main(){
 //                             count++;
 //                         }
 //                     } 
-//                 else if (*(iter) == *(iter + 1)) {
+//                     else if (*(iter) == *(iter + 1)) {
 //                         iter++;
+//                     } 
+//                     else {
+//                         return false;
+//                     }
 //                 } 
 //                 else {
+//                     if (hand.size() == 1) {
+//                         hand.erase(iter);
+//                         count++;
+//                     } 
+//                     else
 //                         return false;
 //                 }
-//             } 
-//             else {
-//                 if (hand.size() == 1) {
-//                     hand.erase(iter);
-//                     count++;
-//                 } else
-//                     return false;
-//              }
 //         }
-//             size = hand.size();
+//         size = hand.size();
 //     }
-//         return true;
+//     return true;
 // }
