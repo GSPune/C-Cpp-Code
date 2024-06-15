@@ -23,16 +23,15 @@ int main(){
     {
         cout << tmp->val << endl;
     }
-    ListNode *temp1 = NULL, *temp2 = head->next;
+    ListNode *prev = NULL, *nt = NULL , *cur = head;
 
-    while(head->next != nullptr){
-        head->next = temp1;
-        temp1 = head;
-        head = temp2;
-        temp2 = head->next;
+    while(cur != nullptr){
+        nt = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = nt;
     }
-    head -> next = temp1;
-
+    head = prev;
     for (ListNode *tmp = head; tmp != NULL; tmp = tmp->next)
     {
         cout << tmp->val << endl;
