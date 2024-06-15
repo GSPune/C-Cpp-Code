@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
 public:
     //O(nlogn)
-    //Counting Sort 
+    //Counting Sort O(n+100)
     int minMovesToSeat(vector<int>& seats, vector<int>& students) {
         sort(seats.begin(),seats.end());
         sort(students.begin(),students.end());
