@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//1st Attempt -- Optimization to be done
 class Solution {
 public:
     int minIncrementForUnique(vector<int>& nums) {
