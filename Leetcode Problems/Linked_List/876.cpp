@@ -1,6 +1,5 @@
 // Given the head of a singly linked list, return the middle node of the linked list.
 
-
 #include <bits/stdc++.h>
 using namespace std;
 
