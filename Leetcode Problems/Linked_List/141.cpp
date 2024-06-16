@@ -14,7 +14,7 @@ struct ListNode {
 
 bool hasCycle(ListNode *head) {
     ListNode *h = head, *t = head;
-    while(t && h->next && h->next->next){
+    while(h && h->next){
         h = h->next->next;
         t = t->next;
         if(h == t)

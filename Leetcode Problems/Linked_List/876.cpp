@@ -23,16 +23,17 @@ int main(){
 
     ListNode* h = head, *t = head;
     
-    while(h->next != nullptr && h->next->next != nullptr){
+    while(h && h->next){
         h = h->next->next;
         t = t->next;
     }
 
-    if(h->next == nullptr){
-        cout << t->val;
-    }
-    else
-      cout << t->next->val;
+    cout << t->val;
+    // if(h->next == nullptr){
+    //     cout << t->val;
+    // }
+    // else
+    //   cout << t->next->val;
     
     //freeing nodes
     while(head != nullptr){
