@@ -31,6 +31,7 @@ int main(){
         prev = cur;
         cur = nt;
     }
+    
     head = prev;
     for (ListNode *tmp = head; tmp != NULL; tmp = tmp->next)
     {

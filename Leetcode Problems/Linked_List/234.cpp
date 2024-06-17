@@ -12,17 +12,30 @@ struct ListNode {
       ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
+//without storing any values ..O(3n) = O(n)
 bool isPalindrome(ListNode* head) {
-    ListNode *tmp;
-    string fn;
-    long long count = 0,rnum = 0;
-    for(tmp = head; tmp != nullptr; tmp = tmp->next){
-        rnum += (tmp->val)*pow(10,count); 
-        fn += to_string(tmp->val);
-        count++;
-     }
+    vector<int> values;
+    int k = 0;
+    for(ListNode *tmp = head; tmp != NULL; tmp = tmp->next){
+        values.push_back(tmp->val);
+    }
 
-     return (rnum == stoll(fn));
+    ListNode *prev = NULL, *nt = NULL , *cur = head;
+
+    while(cur != nullptr){
+        nt = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = nt;
+    }
+    head = prev;
+
+    for(ListNode *tmp = head; tmp != NULL; tmp = tmp->next){
+        if(values[k] != tmp->val)
+            return false;
+        k++;
+    }
+    return true;
 }
 
 int main(){
