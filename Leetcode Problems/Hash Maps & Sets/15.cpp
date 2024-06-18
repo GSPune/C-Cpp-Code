@@ -5,15 +5,17 @@ j != k, and nums[i] + nums[j] + nums[k] == 0.*/
 #include <bits/stdc++.h>
 using namespace std;
 
+//works but fails to clear TLE for a test case
 vector<vector<int>> threeSum(vector<int>& nums) {
      vector<vector<int>> res;
+     map<vector<int>,int> removeDuplicates;
      int i,j,e,target;
      int sz = nums.size();
 
      map<int,int> M;
      for (int k = 0; k < sz; ++k)
-        // if(M[nums[k]])
-        M[nums[k]] = k;
+        // if(M.find(nums[k]) == M.end())
+            M[nums[k]] = k;
 
      for (i = 0; i < sz; ++i){
         target = 0 - nums[i];
@@ -22,10 +24,14 @@ vector<vector<int>> threeSum(vector<int>& nums) {
             map<int,int>::iterator it = M.find(e);
             if(it != M.end() && it->second > j){
                 vector<int> ans = {nums[i],nums[j],e};
-                res.push_back(ans);
+                sort(ans.begin(),ans.end());
+                removeDuplicates[ans]++;
             }
         }
      }
+
+    for(auto &vec:removeDuplicates)
+        res.push_back(vec.first);
 
      return res;
 }
