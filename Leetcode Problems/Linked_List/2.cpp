@@ -55,6 +55,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         }
     }
 
+    //important step!
     if(carry){
         dI->next = new ListNode(carry);
         dI = dI->next;
