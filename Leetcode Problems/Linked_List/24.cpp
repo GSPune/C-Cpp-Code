@@ -22,22 +22,28 @@ ListNode* swapPairs(ListNode* head) {
     ListNode *t1 = head, *t2 = head->next, *prev;   
     head = t2;
 
+    //swap the first 2 nodes
     t1->next = t2->next;
     t2->next = t1;
-    prev = t1;
 
-    while(t1 && t2){
-        prev->next = t2;
-        t2->next = t1;
-        // head = t2;
+    // prev = t1;
+    // t1 = t1->next;
+    // t2 = t2->next->next;
 
+    while(t1->next && t1->next->next){
+        //update the pointers
+        //order matters
         prev = t1;
+        t2 = t1->next->next;
         t1 = t1->next;
-        t2 = t1->next;
+
+        //building links
+        prev->next = t2;
+        t1->next = t2->next;
+        t2->next = t1;
     }
 
     return head;
-
 }
 
 int main(){
