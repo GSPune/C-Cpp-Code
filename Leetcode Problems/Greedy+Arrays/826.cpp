@@ -4,9 +4,8 @@
 using namespace std;
 
 int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int>& worker) {
-    int sz1 = worker.size(), sz2 = difficulty.size(), profits = 0;
+    int sz1 = worker.size(), sz2 = difficulty.size(), netProfit = 0;
     // int suitable = -1;
-
     map<int,int> M;    
     //map creation
     for(int k = 0; k < sz2; ++k){
@@ -20,22 +19,30 @@ int maxProfitAssignment(vector<int>& difficulty, vector<int>& profit, vector<int
         }
     }
 
-    // sort(difficulty.begin(),difficulty.end());
-    // sort(profit.begin(),profit.end());
-    // sort(worker.begin(),worker.end());
+    sort(difficulty.begin(),difficulty.end());
+    for (int i = 1; i < sz2; ++i){
+        M[difficulty[i]] = max(M[difficulty[i-1]],M[difficulty[i]]);
+        // M[difficulty[i-1] > M[difficulty[i]]] ?
+    }
 
-    for(int i = 0; i < sz1; ++i){
-        int pf = 0;
-        for(int j = 0; j < sz2; ++j){
-            int comp = (worker[i] - difficulty[j]);
-            if(comp >= 0 && pf < M[difficulty[j]]){
-                pf = M[difficulty[j]];
+    for (int i = 0; i < sz1; ++i) {
+        int jp = 0,ability = worker[i];
+
+        //Find the job with just smaller or equal difficulty than ability.
+        int l = 0, r = sz2-1;
+        while(l <= r){
+            int mid = (l+r)/2;
+            if(difficulty[mid] <= ability){
+                jp = max(jp,M[difficulty[mid]]);
+                l = mid + 1;
             }
+            else
+                r = mid - 1;
         }
-        profits += pf;
+        netProfit += jp;
     }
     
-    return profits;
+    return netProfit;
 }
 
 int main(){
