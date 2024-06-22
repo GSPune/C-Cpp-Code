@@ -26,28 +26,23 @@ ListNode* removeNodes(ListNode* head) {
 
     stack<ListNode*> stk;
     ListNode *cur = head;
-    ListNode *newHead = cur,*tmp = newHead;
+    ListNode *newHead = cur,*tmp; //= newHead;
     stk.push(cur);
     cur = cur->next;
     while(cur){
         ListNode *look = stk.top();
-        // if(look->val > cur->val){
-        //     stk.push(cur);
-        // }
-        // else{
-        //     while(stk.size() != 0 && stk.top()->val < cur->val)
-        //         stk.pop();
-        // }
 
         if(look->val < cur->val){
-            while(stk.size() != 0 && stk.top()->val < cur->val)
+            while(stk.size() != 0 && stk.top()->val < cur->val){
+                ListNode *freep = stk.top();
                 stk.pop();
+                delete freep;
+            }
         }
 
         if(stk.size() == 0){
             //readjust the pointers first
             newHead = cur;
-            tmp = newHead;
         }
         else{
             tmp = stk.top();
