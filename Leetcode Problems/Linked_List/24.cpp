@@ -54,10 +54,19 @@ int main(){
     head->next->next->next = new ListNode(4);
     // head->next->next->next->next = new ListNode(5);
 
-    for(ListNode *tmp = swapPairs(head); tmp != nullptr; tmp = tmp->next){
+    ListNode *p = swapPairs(head);
+    for(ListNode *tmp = p; tmp != nullptr; tmp = tmp->next){
         cout << tmp->val << " ";
     }
     
+    while (p)
+    {
+        ListNode *tmp = p->next;
+        delete p;
+        p = tmp;
+    }
+    
+
     while(head != nullptr){
         ListNode *tmp = head->next;
         delete head;
