@@ -15,26 +15,28 @@ struct ListNode {
 };
 
  ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-    
-    ListNode *d = new ListNode(), *cur1 = list1, *cur2 = list2;
+    //dummy nodes again
+    ListNode *d = new ListNode();
     ListNode *dI = d;
 
-    while(cur1 && cur2){
-        dI->next = new ListNode(cur1->val);
-        dI = dI->next;
-        dI->next = new ListNode(cur2->val);
-        dI = dI->next;
-        cur1 = cur1->next;cur2 = cur2->next;
+    while(list1 && list2){
+        if(list1->val < list2->val){
+            dI->next = list1;
+            dI = dI->next;
+            list1 = list1->next;
+        }
+        else{
+            dI->next = list2;
+            dI = dI->next; 
+            list2 = list2->next;
+        }    
     }
 
-    while(cur1){
-        dI->next = new ListNode(cur1->val);
-        dI = dI->next;
+    if(list1){
+        dI->next = list1;
     }
-
-    while(cur2){
-        dI->next = new ListNode(cur2->val);
-        dI = dI->next;
+    else{
+        dI->next = list2;
     }
 
     ListNode* nH = d->next;
@@ -46,7 +48,7 @@ int main(){
     ListNode *h1;
     h1 = new ListNode(1);
     h1->next = new ListNode(2);
-    h1->next->next = new ListNode(4);
+    h1->next->next = new ListNode(3);
 
     ListNode *h2;
     h2 = new ListNode(1);
