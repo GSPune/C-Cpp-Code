@@ -4,34 +4,47 @@ substring.*/
 #include <bits/stdc++.h>
 using namespace std;
 
+int findMaxConsecutiveOnes(vector<int>& nums) {
+    int sz = nums.size(),cur = 0,res = 0;
+    for(int i = 0; i < sz; ++i){
+        if(nums[i] == 1){
+            cur++;
+        }
+        else{
+            res = max(res,cur);
+            cur = 0;
+        }
+    }
+
+    return max(res,cur);
+}
+
 int longestValidParentheses(string s) {
-    stack<char> stk;
+    stack<int> stk;
+    vector<int> a(s.size(),0);
     int ans = 0, l = 0, sz = s.size();
     for(int i = 0; i < sz; ++i){
         if(s[i] == '(')
-            stk.push(s[i]);
+            stk.push(i);
         else{
-            if(stk.empty()){
-                ans = max(ans,l);
-                l = 0; //reset length
-            }
-            else{
-                stk.pop();
-                l += 2;
-            }
+          if(!stk.empty()){
+            a[stk.top()] = 1;
+            a[i] = 1;
+            stk.pop();
+          }
+          else
+          {
+            continue;
+          }
         }
     } 
-    if(!stk.empty()){
-        if(s[sz-1] == ')')
-            l-=2;
-    }
-    ans = max(ans,l);
-    return ans;      
+
+    return findMaxConsecutiveOnes(a);      
 }
 
 int main(){
     // string s = ")()())";
-    string s = "()(())(";
+    string s = "()(()";
     cout<<longestValidParentheses(s)<<endl;
     return 0;
 }
