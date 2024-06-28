@@ -106,7 +106,7 @@ int getAlive(vector<vector<int>>& M,int r,int c){
     return ans;
 }
 
-vector<vector<int>> gameOfLife(vector<vector<int>>& board) {
+void gameOfLife(vector<vector<int>>& board) {
     int rows = board.size();
     int cols = board[0].size();
     vector<vector<int>> N(rows,vector<int>(cols));
@@ -122,22 +122,26 @@ vector<vector<int>> gameOfLife(vector<vector<int>>& board) {
                 }
             }
             else{
-                if(neighbours < 2){
-                    N[i][j] = 0;
-                }
-                else if(neighbours = 3){
+                if(neighbours == 3){
                     N[i][j] = 1;
+                }
+                else{
+                    N[i][j] = 0;
                 }
             }
         }
     }
-    return N;
+    for(int i = 0; i < rows; ++i){
+        for(int j = 0; j < cols; ++j){
+            board[i][j] = N[i][j];        
+        }
+    }
 }
 
 int main(){
     vector<vector<int>> M = {{0,1,0},{0,0,1},{1,1,1},{0,0,0}};
-    vector<vector<int>> New = gameOfLife(M);
-     for(const auto &e:New){
+    gameOfLife(M);
+     for(const auto &e:M){
         for(const auto &u:e){
             cout << u << " ";
         }
