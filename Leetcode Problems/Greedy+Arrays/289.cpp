@@ -3,105 +3,24 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool D1(int i, int j, vector<vector<int>>&N){
-    return N[i-1][j] == 1;
-}
-
-bool D2(int i, int j, vector<vector<int>>&N){
-    return N[i-1][j+1] == 1;
-}
-
-bool D3(int i, int j, vector<vector<int>>&N){
-    return N[i][j+1] == 1;
-}
-
-bool D4(int i, int j, vector<vector<int>>&N){
-    return N[i+1][j+1] == 1;
-}
-
-bool D5(int i, int j, vector<vector<int>>&N){
-    return N[i+1][j] == 1;
-}
-
-bool D6(int i, int j, vector<vector<int>>&N){
-    return N[i+1][j-1] == 1;
-}
-
-bool D7(int i, int j, vector<vector<int>>&N){
-    return N[i][j-1] == 1;
-}
-
-bool D8(int i, int j, vector<vector<int>>&N){
-    return N[i-1][j-1] == 1;
-}
-
 int getAlive(vector<vector<int>>& M,int r,int c){
     int ans = 0;
     int rows = M.size();
     int cols = M[0].size();
-    //case 1
-    if(r == 0 && c == 0){
-        if(D4(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-    }
-    else if(r == 0 && c == cols-1){
-        if(D7(r,c,M)) ans++;
-        if(D6(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-    }
-    else if(r == rows-1 && c == 0){
-        if(D1(r,c,M)) ans++;
-        if(D2(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-    }
-    else if(r == rows-1 && c == cols-1){
-        if(D1(r,c,M)) ans++;
-        if(D8(r,c,M)) ans++;
-        if(D7(r,c,M)) ans++;
-    }
 
-    else if(c == 0){
-        if(D1(r,c,M)) ans++;
-        if(D2(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-        if(D4(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-    }
+    int startRI = (r != 0) ? r-1 : 0;
+    int startCI = (c == 0) ? c : c-1;
+    int endRI = (r == rows-1) ? r : r+1;
+    int endCI = (c == cols-1) ? c : c+1;
 
-    else if(r == 0){
-        if(D7(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-        if(D6(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-        if(D4(r,c,M)) ans++;
-    }
-
-    else if(c == cols-1){
-        if(D1(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-        if(D8(r,c,M)) ans++;
-        if(D7(r,c,M)) ans++;
-        if(D6(r,c,M)) ans++;
-    }
-
-    else if(r == rows-1){
-        if(D1(r,c,M)) ans++;
-        if(D2(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-        if(D7(r,c,M)) ans++;
-        if(D8(r,c,M)) ans++;
-    }
-
-    else{
-        if(D1(r,c,M)) ans++;
-        if(D2(r,c,M)) ans++;
-        if(D3(r,c,M)) ans++;
-        if(D4(r,c,M)) ans++;
-        if(D5(r,c,M)) ans++;
-        if(D6(r,c,M)) ans++;
-        if(D7(r,c,M)) ans++;
-        if(D8(r,c,M)) ans++;
+    for(int i = startRI; i <= endRI; ++i){
+        for(int j = startCI; j <= endCI ; ++j){
+            if(i != r || j != c){
+                if(M[i][j] == 1){
+                    ans++;
+                }
+            }    
+        }
     }
     return ans;
 }
