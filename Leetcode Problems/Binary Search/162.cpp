@@ -3,7 +3,7 @@ using namespace std;
 
 int main(void)
 {
-    vector<int> nums = {1,2,1,3,5,6,4};
+    vector<int> nums = {1,2,1,3,5,2,1};
     //vector<int> nums = {5,3,1,6,4,2};
     int size = nums.size(),left = 0,right,mid;
     right = size - 1;
