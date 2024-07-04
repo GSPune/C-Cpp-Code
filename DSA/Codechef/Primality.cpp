@@ -5,12 +5,25 @@ using namespace std;
 #define endl '\n'
 // '\n' is faster
 #define FOR(i,a,b) for(int i=(a); i<(b); ++i)
-#define FORk(i,a,b,k) for(int i=(a); i<(b); i+=k)
-#define RFOR(i,a,b,k) for(int i=(a); i>=(b); --i)
-#define RFORk(i,a,b,k) for(int i=(a); i>=(b); i-=k)
 
 void solve(){
+    int n;
+    cin >> n;
+    if(n == 1){
+        cout << "no" << endl;return;
+    }
+    if (n == 2){
+        cout << "yes" << endl;
+        return;
+    }
+    FOR(i,2,n){
+        if(n%i==0){
+            cout << "no" << endl;
+            return;
+        }
+    }
 
+    cout << "yes" << endl;
 }
 
 int main(){

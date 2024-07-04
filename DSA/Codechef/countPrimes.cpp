@@ -9,8 +9,22 @@ using namespace std;
 #define RFOR(i,a,b,k) for(int i=(a); i>=(b); --i)
 #define RFORk(i,a,b,k) for(int i=(a); i>=(b); i-=k)
 
-void solve(){
+const int N = 1000000;
+bool pr[N+1];
 
+void sieve(){
+    FOR(i,2,N+1) pr[i] = true;
+    // FOR(i,2,N+1)
+    for(int i = 2; i*i <= N; ++i)
+        if(pr[i])
+            FORk(j,i*i,N,i)
+                pr[j] = false;
+}
+
+void solve(){
+    sieve();
+    FOR(i,0,15) cout << pr[i] << " ";
+    cout << endl;
 }
 
 int main(){
