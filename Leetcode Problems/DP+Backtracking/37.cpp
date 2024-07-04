@@ -2,7 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool stopRev = false;
+// bool stopRet = false;
 class Solution {
 private:
     static const int N = 4;// = 9;
@@ -28,9 +28,9 @@ public:
         return true;
     }
 
-    void solveSudoku(vector<vector<char>>& board) {
+    bool solve(vector<vector<char>>& board){
         int r = -1,c = -1;
-        bool isEmpty = false; //, stopRev = false; // finding an empty cell
+        bool isEmpty = false; // finding an empty cell
 
         for(int i = 0; i < N; ++i){
             for(int j = 0; j < N; ++j){
@@ -46,19 +46,22 @@ public:
 
         //No empty cell found..STOP!
         if(!isEmpty){
-            stopRev = true;
-            return;
+            // stopRet = true;
+            return true;
         }
 
         for(int i = 1; i <= N; ++i){
             if(isSafe(board,r,c,i)){
                 board[r][c] = char(i+'0');
-                solveSudoku(board);
-                if(!stopRev)
-                    board[r][c] = '.';
+                if(solve(board)) return true;
+                board[r][c] = '.';
             }  
         }
-        return;
+        return false;
+    }
+
+    void solveSudoku(vector<vector<char>>& board) {
+        solve(board);
     }
 };
 
