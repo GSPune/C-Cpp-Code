@@ -1,4 +1,4 @@
-/*Write a program to solve a Sudoku puzzle 9*9 by filling the empty cells.*/
+/*Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be validated*/
 #include <bits/stdc++.h>
 using namespace std;
 
