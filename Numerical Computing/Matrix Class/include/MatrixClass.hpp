@@ -43,8 +43,12 @@ class Matrix{
         void forwardSubstitution(double **,double*);
 
         //Operations on matrices
-        void addition(Matrix,Matrix);
-        void substraction(Matrix,Matrix);
+        Matrix addition(Matrix&);
+        Matrix operator+ (const Matrix&);
+        
+        Matrix substraction(Matrix&);
+        Matrix operator- (const Matrix&);
+
         void multiply(Matrix,Matrix);
         double determinant();
         Matrix inverse();

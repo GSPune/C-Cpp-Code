@@ -225,6 +225,7 @@ vector<vector<double>> Matrix::transpose(){
 
 double Matrix::determinant(){
     //Reduce to upper triangular (row echelon)
+    //Assumption : Matrix can be reduced ... Pivoting yet to be done
     for (int i = 0; i < rows; i++){
 
         double tmp = mat[i][i];
@@ -244,6 +245,39 @@ double Matrix::determinant(){
     for (int p = 0; p < rows; p++)
         det *= mat[p][p];
     return det;
+}
+
+
+//Some standard matrix operations
+Matrix Matrix::addition(Matrix &T){
+    if(this->rows != T.rows || this->cols != T.cols){
+        cout << "Addition can't be performed" << endl;
+        exit(0);
+    }
+    Matrix tmp(T.rows,T.cols);
+    for(int i = 0; i < T.rows; ++i){
+        for (int j = 0; j < T.cols; ++j){
+            tmp.mat[i][j] = this->mat[i][j] + T.mat[i][j];
+        }
+    }
+
+    return tmp;
+}
+
+Matrix Matrix::operator- (const Matrix& T){
+    //Subtraction of Matrices is possible when two matrices are of the same order.
+    if(this->rows != T.rows || this->cols != T.cols){
+        cout << "Substraction can't be performed" << endl;
+        exit(0);
+    }
+    Matrix tmp(T.rows,T.cols);
+    for(int i = 0; i < T.rows; ++i){
+        for (int j = 0; j < T.cols; ++j){
+            tmp.mat[i][j] = mat[i][j] - T.mat[i][j];
+        }
+    }
+
+    return tmp;
 }
 
 Matrix::~Matrix(){
