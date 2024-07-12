@@ -25,26 +25,20 @@ int gcd(int a,int b){
     return gcd(b,a%b);
 }
 
-int lcm(int a,int b){
-    return abs(a*b)/gcd(a,b);
-}
+// int lcm(int a,int b){
+//     return abs(a*b)/gcd(a,b);
+// }
 
 void solve(){
     int l,r;
     cin >> l >> r;
-    int x = l, y = r;
-    
-    while(x < y){
-        int lm = lcm(x,y);
-        if(lm >= l && lm <= r){
-            cout << x << " " << y << endl;
-            return;
-        }
-        x++;y--;
+    if(2*l > r){
+        cout << "-1 -1" << endl;
     }
-
-    cout << "-1 -1" << endl;
+    else
+        cout << l << " " << 2*l << endl;
 }
+    
 
 int main(){
     ios_base::sync_with_stdio(false);
