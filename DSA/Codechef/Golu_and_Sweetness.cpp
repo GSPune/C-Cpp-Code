@@ -1,4 +1,4 @@
-//
+//Count the number of numbers in range [l,r] whose sweetness factor(euler's totient func) is a prime number.
 #include <bits/stdc++.h>
 //wrapper around all the generic libraries in C++
 using namespace std;
