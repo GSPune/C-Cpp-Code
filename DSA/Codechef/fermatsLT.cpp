@@ -16,7 +16,7 @@ typedef long long int ll;
 typedef unsigned long long int ull;
 typedef vector<ll> vll;
 typedef vector<ull> vull;
-const int MOD = 1e9+7;
+const int MOD = 7;//1e9+7;
 
 ll pow(int a,int b){
     if (b==0) return 1;
@@ -26,17 +26,14 @@ ll pow(int a,int b){
     return ans;
 }
 
+ll mod_inv(int a){
+    return pow(a,MOD-2);
+}
+
 void solve(){
-    //iterative approach
-    int a, b;
-    cin >> a >> b;
-    int ans = 1;
-    while(b){
-        if(b%2 == 1) ans = ans*a;
-        b >>= 1; //right shift is less expensive--divide by 2 
-        a *= a; //square a
+    for(int j = 1; j < MOD; ++j){
+        cout << pow(j,MOD-2) << endl;   
     }
-    cout << ans << endl;
 }
 
 int main(){
