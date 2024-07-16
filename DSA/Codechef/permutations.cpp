@@ -6,7 +6,7 @@ using namespace std;
 // '\n' is faster
 #define FOR(i,a,b) for(int i=(a); i<(b); ++i)
 #define FORk(i,a,b,k) for(int i=(a); i<(b); i+=k)
-#define RFOR(i,a,b,k) for(int i=(a); i>=(b); --i)
+#define RFOR(i,a,b) for(int i=(a); i>=(b); --i)
 #define RFORk(i,a,b,k) for(int i=(a); i>=(b); i-=k)
 #define pb push_back
 
@@ -17,6 +17,8 @@ typedef unsigned long long int ull;
 typedef vector<ll> vll;
 typedef vector<ull> vull;
 const int MOD = 1e9+7;
+const int N = 1e5;
+ll f[N],fi[N];
 
 ll pow(int a,int b){
     if (b==0) return 1;
@@ -38,10 +40,28 @@ ll fact(int n){
     return ans;
 }
 
+void pre_fact(){
+    f[0] = 1;
+    FOR(i,1,N+1) f[i] = (i*f[i-1])%MOD;
+}
+
+//using modulo inverses precomputed..O(N+log p)
+void precompute(){
+    f[0] = 1;
+    FOR(i,1,N+1) f[i] = (i*f[i-1])%MOD;
+    fi[N] = mod_inv(f[N]);
+    RFOR(i,N-1,0) fi[i] = ((i+1)*fi[i+1])%MOD;
+}
+
 ll ncr(int n, int r){
-    ll nf = fact(n);
-    ll nrf = mod_inv(fact(n-r));
-    ll rf = mod_inv(fact(r));
+    //Use f[] instead of fact()
+    //T.C = O(N*log(p) + T)...can be improved by using f^-1[i]
+    ll nf = f[n];
+    // ll nrf = mod_inv(f[n-r]);
+    // ll rf = mod_inv(f[r]);
+    ll nrf = fi[n-r];
+    ll rf = fi[r];
+    // cout << nf <<" " <<  nrf << " " << rf << endl;
     return (rf*((nf*nrf)%MOD))%MOD;
 }
 
@@ -57,6 +77,7 @@ int main(){
     cout.tie(NULL);
     //bind cin and cout with scanf and printf..makes them faster
     int t;
+    precompute();
     cin >> t;
     while(t--){
         solve();
