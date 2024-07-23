@@ -16,6 +16,7 @@ typedef long long int ll;
 typedef unsigned long long int ull;
 typedef vector<ll> vll;
 typedef vector<ull> vull;
+const int MOD = 1e9+7;
 
 
 void solve(){
