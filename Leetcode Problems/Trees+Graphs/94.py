@@ -12,7 +12,7 @@ def inorder(root,ans):
             inorder(root.right,ans)
 
 class Solution:
-    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+    def inorderTraversal(self, root) -> list[int]:
         ans = []
         inorder(root,ans)
         return ans
