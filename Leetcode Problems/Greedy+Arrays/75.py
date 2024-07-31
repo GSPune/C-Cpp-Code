@@ -2,6 +2,7 @@ def sortColors(nums):
         """
         Do not return anything, modify nums in-place instead.
         """
+        #Dutch National Flag Algorithm
         n = len(nums)
         l = m = 0
         h = n-1
