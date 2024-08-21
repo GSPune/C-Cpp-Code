@@ -30,6 +30,12 @@ ll poly_hash(string s){
    return ans;
 }
 
+ll number_unique_substrings(string &s){
+    int n = s.length();
+    set<ll> ans;
+    FOR(i,0,n){}
+}
+
 void solve(){
     string s;
     cin >> s;
@@ -43,6 +49,7 @@ int main(){
     //bind cin and cout with scanf and printf..makes them faster
     int t = 1;
     cin >> t;
+    //precompute powers of P = 31
     FOR(i,1,N+1) PP[i] = (PP[i-1]*P)%MOD;
     while(t--){
         solve();
