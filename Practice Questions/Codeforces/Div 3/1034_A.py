@@ -8,7 +8,20 @@ def solve(n):
             mod_catg[i%4] = 1
         else:
             mod_catg[i%4] += 1
-    print(mod_catg)
+
+    pairs = min(mod_catg[0],mod_catg.get(3, 1)) + min(mod_catg.get(1, 0),mod_catg.get(2, 1))
+    # print(f"Pairs: {pairs} & mod_catg: {mod_catg}")
+    if n >= 4:
+        if n % (2*pairs) != 0:
+            print("Alice")
+        else:
+            if n % 2 == 0:
+                print("Bob")
+            else:
+                print("Alice")
+        # print(mod_catg)
+    else:
+        print("Alice")
 
 testCases = int(input())
 for t in range(testCases):
